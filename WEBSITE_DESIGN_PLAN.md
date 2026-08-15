@@ -198,9 +198,10 @@ Recorded as recommendations. **None of these are being generated**, and V1 does 
 1. **A wide (landscape) crop of the hero savanna.** The single most useful one. The source is
    948×1660 portrait, so every desktop viewport crops it hard. A 16:9 composition of the same scene
    would markedly improve the desktop hero.
-2. **A real app icon.** `Icon-App-1024x1024@1x.png` is still the stock Flutter logo (audit REL-003),
-   so there is no brand mark to derive a favicon from. V1 crops the meerkat head out of the logo
-   instead — adequate, not ideal.
+2. ~~**A real app icon.**~~ **DONE.** The owner supplied one, and it is now the source for the
+   iOS icon set, the Android launcher icons and this site's favicon — so the tab icon, the home
+   screen and the store listing are one image. (Previously the crop of the meerkat head out of the logo
+   instead was adequate, not ideal.)
 3. **An Open Graph share image (1200×630).** Links shared to iMessage, WhatsApp or Slack currently
    have nothing to show. V1 ships a crop of existing art; a purpose-made one would be better.
 4. **A horizontal wordmark.** The logo is a tall badge; a wide lockup would suit the footer and a

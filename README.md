@@ -32,7 +32,7 @@ favicon.png
 .nojekyll             tells GitHub Pages to serve the folder as-is
 assets/
   css/site.css        all styles, mobile-first, one file
-  js/config.js        ← THE ONLY FILE TO EDIT FOR STORE LINKS AND SUPPORT EMAIL
+  js/config.js        ← THE ONLY FILE TO EDIT FOR STORE LINKS
   js/site.js          store-link upgrade, carousel dots, entrance reveal
   img/                website-specific optimised copies of game art
   img/shots/          seven real screenshots captured from the running game
@@ -56,7 +56,6 @@ window.MU_CONFIG = {
     appStore:   'https://apps.apple.com/app/idXXXXXXXXXX',
     googlePlay: 'https://play.google.com/store/apps/details?id=com.orshamir.meerkatuniverse',
   },
-  supportEmail: null,
 };
 ```
 
@@ -135,6 +134,6 @@ rounds the corners and adds a border and shadow.
 
 Recorded rather than invented — see `WEBSITE_DESIGN_PLAN.md` for the full list:
 
-- There is **no real app icon** yet; the favicon and the small mark are cropped from the logo.
+- The favicon and the small mark are the real app icon, shared with the iOS and Android builds.
 - There is **no wide (landscape) hero crop**, so desktop crops the portrait art tightly.
 - There is **no purpose-made Open Graph image**; shared links currently show the hero crop.

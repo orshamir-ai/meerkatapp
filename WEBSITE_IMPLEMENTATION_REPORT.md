@@ -90,7 +90,7 @@ transparency stays PNG, photographic scenes and screenshots become JPEG.
 | `logo.png` | `welcome/` | 169 K |
 | `guardian.png` | `result_screen/victory_guardian.png` | 90 K |
 | `leaf-1/7/14.png` | `home_screen/ambient/` | ~6 K each |
-| `icon-180.png`, `favicon.png` | cropped from the logo | 59 K / 2 K |
+| `icon-180.png`, `favicon.png` | the app icon, shared with the iOS/Android builds | 59 K / 2 K |
 | `shots/*.jpg` (7) | captured from the running game | 1.0 MB |
 
 The hero uses `srcset` with a **matching `imagesrcset` on the preload**, so the preload and the
@@ -124,9 +124,9 @@ would have ranked the player #1 and made the board look staged.
 1. **A wide (landscape) crop of the hero savanna.** The most useful one by far. The source is
    948×1660 portrait, so every desktop viewport crops it hard; the framing had to be tuned to keep
    the treehouse in frame at all.
-2. **A real app icon.** `Icon-App-1024x1024@1x.png` is still the stock Flutter logo (audit REL-003),
-   so there is no brand mark to derive a favicon from — V1 crops the meerkat head out of the logo.
-   **A placeholder is in place pending the icon you said you would provide.**
+2. ~~**A real app icon.**~~ **RESOLVED.** The owner supplied one after the site shipped. It is now
+   the single source for the iOS icon set, the Android launcher icons and this site's favicon, so
+   the browser tab, the phone home screen and the store listing all show the same image.
 3. **An Open Graph share image (1200×630).** Shared links currently show a crop of the hero.
 4. **A horizontal wordmark.** The logo is a tall badge; a wide lockup would suit the footer better.
 5. **Baloo 2 as a subset `woff2`**, to tie website headings to the game's own dialog titles.
@@ -286,7 +286,7 @@ are mistaken for final. They should be replaced with reviewed text before the ap
 
 | Item | Owner action |
 |---|---|
-| Real app icon | You said you would provide one; a logo crop is in place |
+| ~~Real app icon~~ | Done — supplied and applied to web, iOS and Android |
 | Store URLs | Set both in `assets/js/config.js` when the apps are live |
 | Support email | Set `supportEmail` in the same file |
 | Privacy policy and terms | Must be drafted and reviewed; drafts are marked and `noindex` |
