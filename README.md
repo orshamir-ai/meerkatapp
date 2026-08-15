@@ -84,27 +84,32 @@ documentation rather than invented.
 
 ## GitHub Pages — live
 
-**https://orshamir-ai.github.io/meerkat-universe/**
+**https://orshamir-ai.github.io/meerkatapp/**
 
 Served from this repo as a GitHub Pages **project page**: branch `main`, folder `/ (root)`.
 Every push to `main` rebuilds it automatically.
 
-This is deliberately a project page and **not** the user page. `orshamir-ai.github.io` already
-serves the NudgeIt site, and the two are separate repositories with separate builds:
+This is deliberately a project page and **not** the user page. Three sites are served from this
+account, each from its own repository with its own build:
 
 ```
-orshamir-ai.github.io/                   → NudgeIt          (untouched)
-orshamir-ai.github.io/meerkat-universe/  → Meerkat Universe (this repo)
+orshamir-ai.github.io/            → NudgeIt          (repo orshamir-ai.github.io, unchanged)
+orshamir-ai.github.io/nudgeit/    → NudgeIt          (repo nudgeit — a copy at its own URL)
+orshamir-ai.github.io/meerkatapp/ → Meerkat Universe (repo meerkatapp — this one)
 ```
 
-Every asset path in every page is **relative**, which is what lets the same files work at a project
-subpath, at a user page, and at a custom domain later with no edit. `.nojekyll` is present so GitHub
-serves the folder as-is rather than running it through Jekyll.
+NudgeIt deliberately answers at **both** URLs. Its root copy stays because that is where any
+existing link points — including the privacy and support URLs an App Store listing is required to
+carry — and breaking those to tidy up a path would be a bad trade. The root can be retired later,
+once nothing points at it.
+
+Every asset path in every page here is **relative**, which is what lets the same files work at a
+project subpath, at a user page, and at a custom domain later with no edit at all. (The NudgeIt copy
+had to be converted to relative paths for exactly this reason; it was written for the domain root.)
+`.nojekyll` is present so GitHub serves the folder as-is rather than running it through Jekyll.
 
 **A custom domain has not been configured and no DNS was changed.** That is a separate, deliberate
-step. If it is taken later, promoting this site to the root would mean either moving NudgeIt to its
-own project repo or pointing a domain here — both decisions for the owner, neither implied by this
-deployment.
+step.
 
 ---
 

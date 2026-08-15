@@ -231,7 +231,7 @@ support URL anywhere in the shipped pages.
 The site was built with nothing published. It was deployed afterwards, when the owner asked for the
 directory to become a repository for their GitHub page.
 
-**Live: https://orshamir-ai.github.io/meerkat-universe/** — repo `orshamir-ai/meerkat-universe`
+**Live: https://orshamir-ai.github.io/meerkatapp/** — repo `orshamir-ai/meerkatapp`
 (public), Pages source branch `main`, folder `/ (root)`.
 
 **The existing NudgeIt site was NOT touched, and that was the whole decision.** `orshamir-ai.github.io`
@@ -241,9 +241,28 @@ Publishing here would have replaced a production site, so it was raised rather t
 owner confirmed both sites must live at separate URLs, which a project page gives for free:
 
 ```
-orshamir-ai.github.io/                   → NudgeIt          (verified still serving, HTTP 200)
-orshamir-ai.github.io/meerkat-universe/  → Meerkat Universe (new)
+orshamir-ai.github.io/            → NudgeIt          (verified still serving, HTTP 200)
+orshamir-ai.github.io/nudgeit/    → NudgeIt          (a copy, at the owner's requested URL)
+orshamir-ai.github.io/meerkatapp/ → Meerkat Universe (new)
 ```
+
+The owner then asked for both projects to sit at named paths. NudgeIt was **copied** into its own
+`nudgeit` repo rather than moved, so it now answers at both URLs — the root stays because that is
+where any existing link points, including the privacy and support URLs an App Store listing is
+required to carry. Retiring the root is a later decision, once nothing points at it.
+
+That copy could not simply be pushed. The NudgeIt site was written for the domain root and carried
+**40 root-absolute paths** (`/assets/logo.png`, `/privacy`, `/support`, `/`). At a subpath those
+resolve against the domain rather than the page, so `/nudgeit/` would have rendered while every
+internal link silently jumped back out to the root — and would have broken outright the day the root
+was retired. A failure that still looks fine is the worst kind, so the paths were rewritten
+depth-aware. This is precisely the property the Meerkat site was built with from the start.
+
+Naming took one correction worth recording. `meerkatapp` was initially unavailable: GitHub repo
+names are case-insensitive and the private Flutter source repo was already `MeerkatApp`. A follow-up
+API call therefore resolved to **that** repo and set its `homepage` field — an unintended write to a
+private repository, reverted immediately, with its description and private status untouched. The
+owner chose to rename the source repo to `meerkat-app-source`, which freed the name.
 
 Verified after the first build: all five pages, the stylesheet, the config, the hero, a screenshot
 and the favicon return **200**, the deployed page renders correctly at the subpath, and NudgeIt still
