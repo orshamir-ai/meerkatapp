@@ -226,22 +226,40 @@ support URL anywhere in the shipped pages.
 
 ---
 
-## 7. GitHub Pages
+## 7. GitHub Pages — deployed on owner instruction
 
-**Nothing has been published.** No DNS was changed, no custom domain configured, nothing purchased,
-no deployment credentials invented, and no existing site touched.
+The site was built with nothing published. It was deployed afterwards, when the owner asked for the
+directory to become a repository for their GitHub page.
 
-When you are ready:
+**Live: https://orshamir-ai.github.io/meerkat-universe/** — repo `orshamir-ai/meerkat-universe`
+(public), Pages source branch `main`, folder `/ (root)`.
 
-1. Push this repository to GitHub.
-2. **Settings → Pages → Build and deployment → Source: Deploy from a branch**, branch `main`,
-   folder `/ (root)`.
-3. The site appears at `https://<user>.github.io/<repo>/`.
+**The existing NudgeIt site was NOT touched, and that was the whole decision.** `orshamir-ai.github.io`
+already served a live, built NudgeIt marketing site — with the same `privacy` / `support` /
+`delete-account` structure, which makes it easy to mistake for a previous version of this one.
+Publishing here would have replaced a production site, so it was raised rather than assumed. The
+owner confirmed both sites must live at separate URLs, which a project page gives for free:
 
-Every asset path in every page is **relative**, so the site works unchanged at a project subpath, at
-a user page, and at a custom domain later. `.nojekyll` is present so GitHub serves the folder as-is.
+```
+orshamir-ai.github.io/                   → NudgeIt          (verified still serving, HTTP 200)
+orshamir-ai.github.io/meerkat-universe/  → Meerkat Universe (new)
+```
 
-A custom domain is a separate, deliberate step and has not been taken.
+Verified after the first build: all five pages, the stylesheet, the config, the hero, a screenshot
+and the favicon return **200**, the deployed page renders correctly at the subpath, and NudgeIt still
+returns its own title. Relative asset paths are what make the subpath work with no edit.
+
+**No DNS was changed, no custom domain configured, and nothing purchased.** Promoting this site to
+the root later would mean either moving NudgeIt to its own project repo or pointing a domain here —
+both owner decisions, neither implied by this deployment.
+
+### One consequence worth stating plainly
+
+The repository is **public**, so the draft `privacy.html` and `terms.html` are now publicly
+reachable. They carry unmissable "working draft, not a published policy" blocks and are `noindex`,
+so they will not be indexed as the real thing — but they are visible to anyone with the URL. That is
+the correct trade while the pages say clearly what they are; it stops being correct the moment they
+are mistaken for final. They should be replaced with reviewed text before the app is submitted.
 
 ---
 

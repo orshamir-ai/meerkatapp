@@ -82,23 +82,29 @@ documentation rather than invented.
 
 ---
 
-## Deploying to GitHub Pages
+## GitHub Pages — live
 
-**Nothing here is published automatically.** No DNS, no custom domain, and no deployment credentials
-are configured in this repo.
+**https://orshamir-ai.github.io/meerkat-universe/**
 
-When the owner is ready:
+Served from this repo as a GitHub Pages **project page**: branch `main`, folder `/ (root)`.
+Every push to `main` rebuilds it automatically.
 
-1. Push this repository to GitHub.
-2. **Settings → Pages → Build and deployment → Source: Deploy from a branch**, branch `main`,
-   folder `/ (root)`.
-3. The site appears at `https://<user>.github.io/<repo>/`.
+This is deliberately a project page and **not** the user page. `orshamir-ai.github.io` already
+serves the NudgeIt site, and the two are separate repositories with separate builds:
 
-Every asset path in every page is **relative**, so the site works unchanged at a project subpath, at
-a user page, and at a custom domain later. `.nojekyll` is present so GitHub serves the folder as-is
-rather than running it through Jekyll.
+```
+orshamir-ai.github.io/                   → NudgeIt          (untouched)
+orshamir-ai.github.io/meerkat-universe/  → Meerkat Universe (this repo)
+```
 
-A custom domain is a separate, deliberate step and has not been taken.
+Every asset path in every page is **relative**, which is what lets the same files work at a project
+subpath, at a user page, and at a custom domain later with no edit. `.nojekyll` is present so GitHub
+serves the folder as-is rather than running it through Jekyll.
+
+**A custom domain has not been configured and no DNS was changed.** That is a separate, deliberate
+step. If it is taken later, promoting this site to the root would mean either moving NudgeIt to its
+own project repo or pointing a domain here — both decisions for the owner, neither implied by this
+deployment.
 
 ---
 
