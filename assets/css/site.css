@@ -1,0 +1,495 @@
+/* =============================================================================
+   MEERKAT UNIVERSE — site styles
+
+   The game's art is the spectacle; this chrome is quiet. Palette values are
+   lifted verbatim from the app's own `mu_tokens.dart` so the site cannot drift
+   away from the product.
+
+   Mobile-first: everything below the first @media block is the phone.
+   ========================================================================== */
+
+:root {
+  /* --- palette, from mu_tokens.dart ------------------------------------- */
+  --ink:          #5A3A1E;
+  --ink-soft:     #7A5C3E;
+  --ink-faint:    #9C8264;
+  --cream:        #FFF3DC;
+  --cream-deep:   #F7E7C9;
+  --tan:          #CE9A5A;
+  --tan-soft:     #E8D2AE;
+  --accent:       #F08A2E;
+  --accent-soft:  #FFC24D;
+  --leaf:         #4A7A2B;
+  --leaf-light:   #8CBF3F;
+  --sky-top:      #FFE9B8;
+  --sky-mid:      #FAD08A;
+  --horizon:      #F3B074;
+
+  /* --- type ------------------------------------------------------------- */
+  /* `ui-rounded` resolves to SF Pro Rounded on Apple platforms — soft and
+     friendly, exactly the register a children's game needs — and costs nothing
+     to load. The logo carries the brand personality; a second decorative face
+     would only compete with it. */
+  --font: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN",
+          system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --measure: 62ch;
+  --page-max: 1100px;
+  --radius: 18px;
+  --radius-sm: 12px;
+
+  --shadow-soft: 0 2px 6px rgba(90, 58, 30, .08), 0 12px 28px rgba(90, 58, 30, .10);
+  --shadow-lift: 0 4px 10px rgba(90, 58, 30, .12), 0 18px 40px rgba(90, 58, 30, .16);
+
+  color-scheme: light;
+}
+
+/* --- reset-ish ---------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;          /* the hero art bleeds; the page must not scroll sideways */
+}
+
+/* Every <img> carries real width/height attributes so nothing shifts as art
+   loads. Those attributes are also PRESENTATIONAL HINTS, though, so an image
+   the CSS resizes by width alone would be stretched to the attribute's height.
+   `height: auto` neutralises the hint while keeping the reserved aspect ratio.
+   `.hero__art` overrides it at class specificity, which is intended. */
+img { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3 { line-height: 1.15; text-wrap: balance; margin: 0 0 .5em; font-weight: 800; }
+h2 { font-size: clamp(1.5rem, 5.2vw, 2.1rem); }
+h3 { font-size: 1.15rem; }
+p  { margin: 0 0 1em; }
+
+a { color: #C86A15; text-underline-offset: .18em; }
+a:hover { color: var(--accent); }
+
+/* Focus is visible everywhere, and never removed. */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--cream); color: var(--ink);
+  padding: .7rem 1.1rem; border-radius: 0 0 var(--radius-sm) 0;
+  font-weight: 700;
+}
+.skip-link:focus { left: 0; }
+
+.wrap { width: 100%; max-width: var(--page-max); margin-inline: auto; padding-inline: 20px; }
+.measure { max-width: var(--measure); }
+
+/* =============================================================================
+   HERO
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 560px;
+  height: 100svh;              /* small-viewport unit: the mobile address bar
+                                  appearing/disappearing must not resize this */
+  display: grid;
+  grid-template-rows: 1fr auto;
+  /* An explicit minmax(0, …) column. A grid item defaults to `min-width: auto`,
+     which refuses to shrink below its content — so the two store buttons made
+     this column wider than the phone, and `overflow: hidden` then CLIPPED the
+     logo, the tagline and the buttons rather than letting them wrap. */
+  grid-template-columns: minmax(0, 1fr);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero__art {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;    /* favour the treehouse, not the empty foreground */
+  z-index: -2;
+}
+
+/* A DELIBERATE SCRIM, not luck. Text legibility over artwork cannot depend on
+   which pixels happen to sit behind it. */
+.hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(120% 62% at 50% 24%, rgba(255,243,220,.55) 0%, rgba(255,243,220,0) 62%),
+    linear-gradient(to bottom,
+      rgba(90,58,30,.10) 0%,
+      rgba(90,58,30,0)  28%,
+      rgba(255,243,220,.10) 62%,
+      rgba(255,243,220,.86) 88%,
+      var(--cream) 100%);
+}
+
+.hero__inner {
+  grid-row: 2;
+  min-width: 0;                /* see the column note above */
+  text-align: center;
+  padding: 0 20px calc(28px + env(safe-area-inset-bottom));
+  /* A SECOND, LOCAL wash on top of the hero-wide scrim. The wide one ramps to
+     cream by the bottom of the frame, but the supporting line sits mid-frame
+     over bright sunlit grass, where ink-soft brown was legible-but-weak. This
+     lifts only the band the text occupies, and starts fully transparent so the
+     artwork above it is untouched. */
+  background: linear-gradient(to bottom,
+    rgba(255, 243, 220, 0)   0%,
+    rgba(255, 243, 220, .38) 26%,
+    rgba(255, 243, 220, .74) 56%,
+    rgba(255, 243, 220, .92) 100%);
+}
+
+.hero__logo {
+  width: min(70vw, 300px);
+  height: auto;
+  margin: 0 auto .6rem;
+  filter: drop-shadow(0 6px 14px rgba(90, 58, 30, .28));
+}
+
+.hero__tagline {
+  font-size: clamp(1.45rem, 6.4vw, 2rem);
+  font-weight: 800;
+  margin: 0 0 .3em;
+  color: var(--ink);
+  text-shadow: 0 1px 0 rgba(255,243,220,.7);
+}
+
+.hero__sub {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin: 0 auto 1.4rem;
+  max-width: 30ch;
+}
+
+/* Drifting leaves — decorative only, and hidden from assistive tech. */
+.leaf {
+  position: absolute;
+  z-index: -1;
+  width: 46px;
+  opacity: .75;
+  pointer-events: none;
+  will-change: transform;
+}
+.leaf--1 { top: 12%;  left: 8%;  animation: drift 34s ease-in-out infinite; }
+.leaf--2 { top: 26%;  right: 9%; width: 34px; animation: drift 44s ease-in-out infinite reverse; }
+.leaf--3 { top: 46%;  left: 16%; width: 28px; animation: drift 39s ease-in-out infinite 4s; }
+
+@keyframes drift {
+  0%   { transform: translate3d(0,0,0) rotate(0deg); }
+  50%  { transform: translate3d(14px,26px,0) rotate(16deg); }
+  100% { transform: translate3d(0,0,0) rotate(0deg); }
+}
+
+/* =============================================================================
+   STORE BUTTONS
+
+   Two states from one set of styles. `a.store-btn` is a real link (only ever
+   rendered when a URL is configured); `span.store-btn` is the placeholder — it
+   is NOT focusable and NOT a link, so it cannot navigate, cannot reload the
+   page, and does not lie to a screen reader about being actionable.
+   ========================================================================== */
+
+.store-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: 0 0 .7rem;
+}
+
+.store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 56px;                 /* comfortably above a 44pt target */
+  padding: 10px 20px;
+  border-radius: 14px;
+  background: var(--ink);
+  color: var(--cream);
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: var(--shadow-soft);
+  border: 2px solid rgba(255,243,220,.16);
+  transition: transform .12s ease, box-shadow .18s ease, background-color .18s ease;
+}
+.store-btn__glyph { width: 26px; height: 26px; flex: none; fill: currentColor; }
+.store-btn__lines { display: flex; flex-direction: column; line-height: 1.12; text-align: left; }
+.store-btn__small { font-size: .68rem; font-weight: 600; opacity: .82; letter-spacing: .02em; }
+.store-btn__big   { font-size: 1.02rem; font-weight: 800; }
+
+a.store-btn:hover { background: #6B4526; box-shadow: var(--shadow-lift); }
+a.store-btn:active { transform: scale(.97); }
+
+/* The placeholder reads as "not yet", never as "broken". */
+span.store-btn { opacity: .92; cursor: default; }
+
+.store-note {
+  font-size: .84rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* =============================================================================
+   SECTIONS
+   ========================================================================== */
+
+.section { padding: clamp(48px, 9vw, 88px) 0; }
+.section--tint { background: linear-gradient(to bottom, var(--cream), var(--cream-deep)); }
+.section__lead { color: var(--ink-soft); font-size: 1.06rem; }
+
+.eyebrow {
+  font-size: .78rem; font-weight: 800; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--tan);
+  margin: 0 0 .5rem;
+}
+
+/* --- screenshots -------------------------------------------------------- */
+
+.shots {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 6px 20px 22px;
+  margin-inline: calc(-1 * 20px);   /* bleed to the screen edge so the next
+                                       card peeks and reads as swipeable */
+}
+.shots::-webkit-scrollbar { display: none; }
+
+.shot {
+  flex: 0 0 auto;
+  width: min(66vw, 260px);
+  margin: 0;
+  scroll-snap-align: center;
+}
+.shot img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--tan-soft);
+  box-shadow: var(--shadow-soft);
+  background: var(--cream-deep);
+}
+.shot figcaption {
+  margin-top: .6rem;
+  font-size: .88rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.dots { display: flex; gap: 8px; justify-content: center; margin-top: 4px; }
+.dot {
+  width: 9px; height: 9px; padding: 0;
+  border-radius: 50%; border: 0;
+  background: var(--tan-soft);
+  cursor: pointer;
+  transition: background-color .2s ease, transform .2s ease;
+}
+.dot[aria-current="true"] { background: var(--accent); transform: scale(1.25); }
+
+/* --- features ----------------------------------------------------------- */
+
+.cards { display: grid; gap: 16px; margin-top: 28px; }
+
+.card {
+  background: var(--cream);
+  border: 1px solid var(--tan-soft);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  box-shadow: var(--shadow-soft);
+}
+.card h3 { margin-bottom: .35em; }
+.card p { margin: 0; color: var(--ink-soft); font-size: .96rem; }
+.card__icon {
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: rgba(240,138,46,.14);
+  margin-bottom: 14px;
+}
+.card__icon svg { width: 24px; height: 24px; fill: none; stroke: #C86A15; stroke-width: 2; }
+
+/* --- final CTA ---------------------------------------------------------- */
+
+.final {
+  text-align: center;
+  background: linear-gradient(to bottom, var(--sky-top), var(--sky-mid) 62%, var(--horizon));
+  padding: clamp(44px, 8vw, 76px) 0 clamp(30px, 6vw, 56px);
+}
+.final__guardian {
+  width: min(46vw, 190px);
+  margin: 0 auto 14px;
+  filter: drop-shadow(0 10px 20px rgba(90,58,30,.24));
+}
+
+/* =============================================================================
+   FOOTER
+   ========================================================================== */
+
+.site-footer {
+  background: var(--ink);
+  color: #E6D3B4;
+  padding: 34px 0 calc(30px + env(safe-area-inset-bottom));
+  font-size: .92rem;
+}
+.site-footer a { color: #F3DDBA; text-decoration: none; }
+.site-footer a:hover { color: #fff; text-decoration: underline; }
+
+.footer-nav {
+  display: flex; flex-wrap: wrap; gap: 10px 22px;
+  justify-content: center; padding: 0; margin: 0 0 18px; list-style: none;
+}
+.footer-nav a { display: inline-block; padding: 6px 2px; }   /* real touch height */
+
+.footer-meta { text-align: center; color: #B9A17F; font-size: .84rem; }
+.footer-mark { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 14px; }
+.footer-mark img { width: 34px; height: auto; }
+.footer-mark span { font-weight: 800; color: var(--cream); }
+
+/* =============================================================================
+   CONTENT PAGES (privacy / terms / support / delete account)
+
+   Readability first. No full-bleed artwork — a legal page overwhelmed by game
+   art is a legal page nobody reads.
+   ========================================================================== */
+
+.page-header {
+  background: linear-gradient(to bottom, var(--sky-top), var(--cream));
+  border-bottom: 1px solid var(--tan-soft);
+  padding: 18px 0;
+}
+.page-header .wrap { display: flex; align-items: center; gap: 12px; }
+.page-header img { width: 40px; height: auto; }
+.page-header .home-link { font-weight: 800; color: var(--ink); text-decoration: none; }
+
+.doc { padding: clamp(30px, 6vw, 56px) 0 clamp(44px, 8vw, 72px); }
+.doc .wrap { max-width: 720px; }
+.doc h1 { font-size: clamp(1.7rem, 6vw, 2.3rem); margin-bottom: .2em; }
+.doc h2 { font-size: 1.24rem; margin-top: 1.9em; }
+.doc h3 { font-size: 1.05rem; margin-top: 1.5em; }
+.doc p, .doc li { color: #4E3319; max-width: var(--measure); }
+.doc ul { padding-left: 1.2em; }
+.doc li { margin-bottom: .45em; }
+.doc__updated { color: var(--ink-faint); font-size: .9rem; margin-bottom: 2em; }
+
+/* An unmissable marker for text that is NOT final. Placeholder legal copy that
+   looks final is worse than no page at all. */
+.placeholder {
+  border: 2px dashed #C0472F;
+  background: #FCEFE9;
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  margin: 0 0 1.6em;
+}
+.placeholder p:last-child { margin-bottom: 0; }
+.placeholder strong { color: #A63A24; }
+
+.callout {
+  background: var(--cream-deep);
+  border-left: 4px solid var(--tan);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px;
+  margin: 0 0 1.6em;
+}
+.callout p:last-child { margin-bottom: 0; }
+
+/* =============================================================================
+   TOP NAV — desktop only
+
+   Declared BEFORE the breakpoints on purpose: `display: none` and the
+   `display: block` inside the 960px query have identical specificity, so
+   whichever is written last wins. Base styles must therefore come first.
+   ========================================================================== */
+
+.topnav {
+  display: none;                    /* mobile: no top nav at all, no hamburger */
+  position: absolute; top: 0; left: 0; right: 0; z-index: 5;
+  padding: 18px 0;
+}
+.topnav ul {
+  display: flex; gap: 26px; justify-content: flex-end;
+  list-style: none; margin: 0; padding: 0;
+}
+.topnav a {
+  color: var(--ink); font-weight: 700; text-decoration: none;
+  font-size: .95rem; padding: 6px 2px;
+  text-shadow: 0 1px 0 rgba(255,243,220,.6);
+}
+.topnav a:hover { color: #C86A15; }
+
+/* =============================================================================
+   MOTION — opt-out respected
+   ========================================================================== */
+
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  /* Content starts visible — never faded-out-and-stuck, which is how this
+     pattern usually breaks for people who asked for less motion. */
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .leaf { animation: none; }
+  * { animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important; }
+}
+
+/* =============================================================================
+   ≥600px — large phones and tablets
+   ========================================================================== */
+
+@media (min-width: 600px) {
+  body { font-size: 18px; }
+  .hero__logo { width: min(52vw, 340px); }
+  .shot { width: 280px; }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .shots { padding-inline: 24px; margin-inline: calc(-1 * 24px); }
+}
+
+/* =============================================================================
+   ≥960px — desktop
+   ========================================================================== */
+
+@media (min-width: 960px) {
+  .hero { height: min(88svh, 820px); }
+  /* Higher, not lower, than the phone's framing. The source art is portrait
+     (948×1660), so a wide viewport scales it up hard and the treehouse — the
+     subject — walks off the top edge. A wide crop of this scene is the top
+     item in the design plan's missing-assets list precisely because of this. */
+  .hero__art { object-position: 50% 18%; }
+  .hero__sub { font-size: 1.1rem; max-width: 40ch; }
+
+  .cards { grid-template-columns: repeat(4, 1fr); }
+
+  .shots {
+    justify-content: center;
+    padding-inline: 0;
+    margin-inline: 0;
+    scroll-snap-type: x proximity;   /* a mouse should not be forced to snap */
+  }
+  .shot { width: 250px; }
+
+  /* A small text nav, only where there is spare room for it. No hamburger:
+     the landing page has one job and the legal links live in the footer. */
+  .topnav { display: block; }
+}

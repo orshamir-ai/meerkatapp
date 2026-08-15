@@ -1,0 +1,5 @@
+.DS_Store
+# Local QA harness files (see README): temporary probe pages used to render the
+# site at exact device widths in headless Chrome. Never part of the site.
+__qa*.html
+__frame.html

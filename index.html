@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meerkat Universe — Guard the treehouse</title>
+<meta name="description" content="A warm, gentle reflex game for young players. Guard your treehouse fruit from climbing intruders. Coming soon to iPhone and Android.">
+<meta name="theme-color" content="#FFF3DC">
+
+<link rel="icon" href="favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="assets/img/icon-180.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Meerkat Universe — Guard the treehouse">
+<meta property="og:description" content="A warm, gentle reflex game for young players. Coming soon to iPhone and Android.">
+<meta property="og:image" content="assets/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- The hero art is the first thing a visitor sees; everything else can wait.
+     imagesrcset/imagesizes mirror the <img> below exactly, so the preload and the
+     element resolve to the SAME file — a mismatch downloads both. -->
+<link rel="preload" as="image" href="assets/img/hero.jpg"
+      imagesrcset="assets/img/hero-sm.jpg 620w, assets/img/hero.jpg 948w"
+      imagesizes="100vw" fetchpriority="high">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Desktop only. No hamburger on mobile: the landing page has one job, and the
+     legal links live in the footer where people look for them. -->
+<nav class="topnav" aria-label="Site">
+  <div class="wrap">
+    <ul>
+      <li><a href="#screenshots">Screenshots</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ===================================================================
+       HERO
+       =================================================================== -->
+  <section class="hero">
+    <img class="hero__art" src="assets/img/hero.jpg"
+         srcset="assets/img/hero-sm.jpg 620w, assets/img/hero.jpg 948w"
+         sizes="100vw" width="948" height="1660"
+         alt="A treehouse in a great tree on a golden savanna at sunset, with acacias and wildflowers."
+         fetchpriority="high">
+
+    <img class="leaf leaf--1" src="assets/img/leaf-1.png" width="110" height="110" alt="" aria-hidden="true">
+    <img class="leaf leaf--2" src="assets/img/leaf-7.png" width="110" height="110" alt="" aria-hidden="true">
+    <img class="leaf leaf--3" src="assets/img/leaf-14.png" width="110" height="110" alt="" aria-hidden="true">
+
+    <div class="hero__inner">
+      <img class="hero__logo" src="assets/img/logo.png" width="380" height="312"
+           alt="Meerkat Universe" fetchpriority="high">
+
+      <h1 class="hero__tagline">Guard the treehouse.</h1>
+      <p class="hero__sub">A warm, gentle reflex game for young players.</p>
+
+      <div class="store-row">
+        <!-- Ships as a span: not a link, not focusable, cannot navigate or
+             reload. `assets/js/config.js` turns it into a real anchor the
+             moment a URL exists. -->
+        <span class="store-btn" data-store="appStore"
+              aria-label="Download on the App Store — coming soon"
+              data-label="Download on the App Store">
+          <svg class="store-btn__glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.2 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-1.1 2.8-2.2c.9-1.2 1.2-2.4 1.3-2.5 0 0-2.5-1-2.5-3.5zM14.2 5.9c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.9 1 .1 2-.5 2.7-1.3z"/></svg>
+          <span class="store-btn__lines">
+            <span class="store-btn__small">Download on the</span>
+            <span class="store-btn__big">App Store</span>
+          </span>
+        </span>
+
+        <span class="store-btn" data-store="googlePlay"
+              aria-label="Get it on Google Play — coming soon"
+              data-label="Get it on Google Play">
+          <svg class="store-btn__glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.6 2.3zM16.1 15.3l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1 .6 1 1.6 0 2.2l-3.7 2.1-.1-.1zM15.9 15.5L12.9 12.4 3.6 21.7c.3.4.9.4 1.5.1l10.8-6.3zM15.9 8.5L5.1 2.2c-.6-.3-1.2-.3-1.5.1l9.3 9.3 3-3.1z"/></svg>
+          <span class="store-btn__lines">
+            <span class="store-btn__small">Get it on</span>
+            <span class="store-btn__big">Google Play</span>
+          </span>
+        </span>
+      </div>
+
+      <p class="store-note">Coming soon</p>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SCREENSHOTS — real captures from the game, shown before any prose.
+       =================================================================== -->
+  <section class="section" id="screenshots">
+    <div class="wrap">
+      <p class="eyebrow reveal">From the game</p>
+      <h2 class="reveal">Climbing intruders. One guardian.</h2>
+      <p class="section__lead measure reveal">Swipe to move between the three branches and knock
+        intruders back before they reach the fruit.</p>
+    </div>
+
+    <div class="wrap">
+      <div class="shots" data-carousel tabindex="0" role="group"
+           aria-label="Game screenshots — scroll sideways to browse">
+
+        <figure class="shot">
+          <img src="assets/img/shots/gameplay_peak.jpg" width="560" height="1217" loading="lazy" decoding="async"
+               alt="Gameplay: four intruders — a monkey, a raccoon, a fox and a squirrel — climb three branches toward a basket of fruit while the guardian meerkat prepares to throw a pinecone.">
+          <figcaption>Four climbers, three branches, two fruit left.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="assets/img/shots/gameplay_freeze.jpg" width="560" height="1217" loading="lazy" decoding="async"
+               alt="Gameplay: a Freeze special attack holds every climbing intruder still in a wash of pale blue.">
+          <figcaption>Freeze buys you ten seconds.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="assets/img/shots/gameplay_impact.jpg" width="560" height="1217" loading="lazy" decoding="async"
+               alt="Gameplay: a pinecone connects and a squirrel tumbles away from the tree in a burst of effects, with one fruit remaining.">
+          <figcaption>A direct hit sends them tumbling.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="assets/img/shots/home.jpg" width="560" height="1217" loading="lazy" decoding="async"
+               alt="Home screen: the guardian meerkat in a green cape stands on the savanna beneath the treehouse, above a large PLAY button.">
+          <figcaption>Your guardian, between rounds.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="assets/img/shots/victory.jpg" width="560" height="1217" loading="lazy" decoding="async"
+               alt="Victory screen reading Perfect, showing intruders stopped, beetles earned and a bonus for fruit saved.">
+          <figcaption>Save every fruit for a bigger reward.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="assets/img/shots/shop_specials.jpg" width="560" height="1217" loading="lazy" decoding="async"
+               alt="Shop screen listing special attacks — Pinecone Barrage, Basket Shield, Freeze Intruders, Guardian Frenzy and Panic — each with a price in beetles.">
+          <figcaption>Spend beetles on special attacks.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="assets/img/shots/social_leaderboard.jpg" width="560" height="1217" loading="lazy" decoding="async"
+               alt="Leaderboard screen with a podium of the top three players and a ranked list below.">
+          <figcaption>See how friends are getting on.</figcaption>
+        </figure>
+      </div>
+
+      <div class="dots" data-dots aria-hidden="false"></div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       WHAT IT IS — deliberately short. The pictures do the work.
+       =================================================================== -->
+  <section class="section section--tint" id="about">
+    <div class="wrap">
+      <div class="measure reveal">
+        <p class="eyebrow">About</p>
+        <h2>A small game about protecting something.</h2>
+        <p>Meerkat Universe is a mobile game for young players. You are the guardian of a treehouse,
+          and hungry visitors keep climbing up for your fruit.</p>
+        <p>One swipe moves you between branches. That is the whole control — easy to learn at five,
+          and steadily harder to keep up with as the levels go on.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       FEATURES — four, all describing things the game actually does.
+       =================================================================== -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow reveal">What is in it</p>
+      <h2 class="reveal">Simple to pick up. Plenty to master.</h2>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card__icon" aria-hidden="true">
+            <!-- A left-right swipe, not three stacked lines: three horizontal
+                 rules on a website read as a hamburger MENU, which is the one
+                 thing this icon must not look like. -->
+            <svg viewBox="0 0 24 24"><path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Three branches</h3>
+          <p>Swipe to move the guardian between lanes. Pinecones fly on their own — your job is
+            being in the right place.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3l2.4 5.5 6 .5-4.5 4 1.4 5.9L12 15.8 6.7 18.9l1.4-5.9-4.5-4 6-.5z" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Four kinds of visitor</h3>
+          <p>Monkeys, quick squirrels, tough raccoons — and a fox you will not see coming until it
+            breaks cover.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M13 2L5 14h6l-1 8 8-12h-6z" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Special attacks</h3>
+          <p>Earn beetles, then spend them on a Freeze, a Shield or a Barrage for the rounds that
+            get away from you.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M16 19a4 4 0 00-8 0M12 11a3 3 0 100-6 3 3 0 000 6M20 19a4 4 0 00-3-3.9M18 10.9a3 3 0 000-5.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Friends and scores</h3>
+          <p>Add a friend with a code and see how far along everyone is on the leaderboard.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       FINAL CTA
+       =================================================================== -->
+  <section class="final">
+    <div class="wrap">
+      <img class="final__guardian" src="assets/img/guardian.png" width="196" height="260" loading="lazy"
+           alt="The guardian meerkat cheering with one arm raised, holding a pinecone.">
+      <h2 class="reveal">Ready when it is.</h2>
+      <p class="section__lead reveal" style="margin-bottom:1.6rem;">Meerkat Universe is on its way to
+        the App Store and Google Play.</p>
+
+      <div class="store-row">
+        <span class="store-btn" data-store="appStore"
+              aria-label="Download on the App Store — coming soon"
+              data-label="Download on the App Store">
+          <svg class="store-btn__glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.2 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-1.1 2.8-2.2c.9-1.2 1.2-2.4 1.3-2.5 0 0-2.5-1-2.5-3.5zM14.2 5.9c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.9 1 .1 2-.5 2.7-1.3z"/></svg>
+          <span class="store-btn__lines">
+            <span class="store-btn__small">Download on the</span>
+            <span class="store-btn__big">App Store</span>
+          </span>
+        </span>
+
+        <span class="store-btn" data-store="googlePlay"
+              aria-label="Get it on Google Play — coming soon"
+              data-label="Get it on Google Play">
+          <svg class="store-btn__glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.6 2.3zM16.1 15.3l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1 .6 1 1.6 0 2.2l-3.7 2.1-.1-.1zM15.9 15.5L12.9 12.4 3.6 21.7c.3.4.9.4 1.5.1l10.8-6.3zM15.9 8.5L5.1 2.2c-.6-.3-1.2-.3-1.5.1l9.3 9.3 3-3.1z"/></svg>
+          <span class="store-btn__lines">
+            <span class="store-btn__small">Get it on</span>
+            <span class="store-btn__big">Google Play</span>
+          </span>
+        </span>
+      </div>
+
+      <p class="store-note">Coming soon</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-mark">
+      <img src="assets/img/icon-180.png" width="34" height="34" loading="lazy" alt="">
+      <span>Meerkat Universe</span>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="delete-account.html">Delete Account</a></li>
+    </ul>
+    <p class="footer-meta">© 2026 Meerkat Universe. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
