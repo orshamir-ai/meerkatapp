@@ -23,11 +23,11 @@ window.MU_CONFIG = {
   },
 
   /* The "Coming soon" caption under the buttons is deliberately NOT configured
-     here — it is written in the HTML, so it is correct with JavaScript
-     disabled, and site.js removes it once a real link exists.
+     here — it is written in the HTML, so it is correct with JavaScript disabled,
+     and site.js removes it once a real link exists.
 
-     The one support address, used by support.html and delete-account.html.
-     null renders an honest "not published yet" note rather than a mailto: that
-     goes nowhere. */
-  supportEmail: null,
+     The support address is likewise written into the pages as real markup, not
+     injected from here: it appears in the privacy policy and the terms, where a
+     contact route that needs JavaScript to appear is no use at all. To change it,
+     grep the repo for the old address. */
 };

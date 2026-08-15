@@ -64,8 +64,16 @@ On the next page load each configured button is replaced by a real `<a>`, and th
 caption beneath them is removed. Both the hero and the closing call-to-action are covered by the
 same one edit. Leaving a value as `null` keeps that button as a placeholder.
 
-The same file holds `supportEmail`. While it is `null`, every page says plainly that no address has
-been published; setting it fills the address in and removes those notices.
+## The support address is in the pages, not in config
+
+`meerkatuniverse.support@gmail.com` is written into the markup of the support, delete-account,
+privacy and terms pages as a real `mailto:` link.
+
+That is deliberate and it is the one thing not driven from `config.js`. The address appears in the
+privacy policy and the terms as the route for a parent to exercise a GDPR or COPPA request, and a
+contact route that only appears once JavaScript has run is no use at all — to a reader with scripts
+off, to a crawler, or to a regulator reading the page. **To change it, grep the repo for the old
+address** rather than editing one line.
 
 ---
 

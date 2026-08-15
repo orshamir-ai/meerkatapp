@@ -169,33 +169,6 @@
     pass();
   }
 
-  /* ---------------------------------------------------------------------
-   * Support address — one config value, several pages.
-   * ------------------------------------------------------------------- */
-  function fillSupportEmail() {
-    // When there is no address, the HTML's own honest fallback stays exactly as
-    // written. Inventing one would be worse than saying it is not published.
-    if (!cfg.supportEmail) return;
-
-    Array.prototype.forEach.call(
-      document.querySelectorAll('[data-support-email]'),
-      function (slot) {
-        var a = document.createElement('a');
-        a.href = 'mailto:' + cfg.supportEmail;
-        a.textContent = cfg.supportEmail;
-        slot.textContent = '';
-        slot.appendChild(a);
-      }
-    );
-
-    // The "no address published" warnings are about the gap this just closed,
-    // so they go with it — otherwise the page contradicts itself.
-    Array.prototype.forEach.call(
-      document.querySelectorAll('[data-support-missing]'),
-      function (n) { n.remove(); }
-    );
-  }
-
   function ready(fn) {
     if (document.readyState !== 'loading') fn();
     else document.addEventListener('DOMContentLoaded', fn);
@@ -205,6 +178,5 @@
     upgradeStoreButtons();
     initCarousel();
     initReveal();
-    fillSupportEmail();
   });
 })();
