@@ -392,6 +392,31 @@ span.store-btn { opacity: .92; cursor: default; }
 .doc li { margin-bottom: .45em; }
 .doc__updated { color: var(--ink-faint); font-size: .9rem; margin-bottom: 2em; }
 
+/* The legal pages use tables to pair "what" with "why" — far easier to check at
+   a glance than the same content as prose. They scroll INSIDE their own box on a
+   narrow phone, so the page body never scrolls sideways. */
+.doc .table-wrap { overflow-x: auto; margin: 0 0 1.6em; -webkit-overflow-scrolling: touch; }
+.doc table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 320px;
+  font-size: .95rem;
+}
+.doc th, .doc td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--tan-soft);
+}
+.doc th { background: var(--cream-deep); font-weight: 800; }
+.doc td:first-child { font-weight: 600; }
+.doc code {
+  background: var(--cream-deep);
+  border-radius: 5px;
+  padding: .1em .4em;
+  font-size: .92em;
+}
+
 /* An unmissable marker for text that is NOT final. Placeholder legal copy that
    looks final is worse than no page at all. */
 .placeholder {

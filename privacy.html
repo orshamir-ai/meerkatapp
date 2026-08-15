@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Privacy Policy — Meerkat Universe</title>
-<meta name="description" content="How Meerkat Universe handles data.">
+<meta name="description" content="How Meerkat Universe handles data, and what parents need to know.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#FFF3DC">
 <link rel="icon" href="favicon.png" sizes="any">
@@ -25,64 +25,211 @@
 <main id="main" class="doc">
   <div class="wrap">
     <h1>Privacy Policy</h1>
-    <p class="doc__updated">Draft — not yet in force.</p>
+    <p class="doc__updated">Draft for review — not yet in force.</p>
 
-    <!-- Marked, unmissably, because placeholder legal copy that looks final is
-         worse than having no page at all. -->
     <div class="placeholder">
-      <p><strong>This is a working draft, not a published privacy policy.</strong></p>
-      <p>The sections below describe what the app has been built to do, taken from the
-        application's own source and documentation. They have not been reviewed by a lawyer, they
-        are not a legal commitment, and they must be replaced with a reviewed policy before
-        Meerkat Universe is submitted to any app store.</p>
+      <p><strong>This draft is not yet published, and must be reviewed before it is.</strong></p>
+      <p>Everything below describes what the app actually does, taken from its source code. Three
+        things still need to be supplied, and are marked <strong>[TO BE COMPLETED]</strong> in the
+        text: the operator's legal name, a contact address, and a contact email. Two changes to the
+        app itself are also assumed and must ship before this is accurate — see
+        <a href="#assumptions">What this policy assumes</a>.</p>
+      <p>This document has not been reviewed by a lawyer. Because the app is intended for children,
+        a review is strongly recommended before submission to any app store.</p>
     </div>
 
-    <h2>Who this is for</h2>
-    <p>Meerkat Universe is intended for children. The app is built to the requirements of the
-      Apple App Store Kids Category, and the notes below reflect the decisions that follow from
-      that.</p>
-
-    <h2>What the app is built to collect</h2>
-
-    <h3>No advertising, and no third-party analytics</h3>
-    <p>The app contains no advertising and no third-party analytics SDK. There is no behavioural
-      profiling of a player and no data broker relationship. This is enforced in the build itself:
-      an automated check reads the app's dependency list and fails if a blocked package is ever
-      added.</p>
-
-    <h3>Game progress</h3>
-    <p>Progress — the level reached, beetles earned and spent, purchased items and capacity — is
-      stored on the device. When a player signs in with an Apple or Google account, that progress is
-      also stored in the app's own cloud so it survives a lost or replaced device.</p>
-
-    <h3>Playing with friends</h3>
-    <p>A player who signs in and opens the social hub publishes a small profile so other players can
-      find them: a chosen nickname, a friend code, the level they have reached, and a chosen
-      picture from a fixed set. There is no free text, no photo upload, and no message field
-      anywhere in the app.</p>
-
-    <h3>Crash reports</h3>
-    <p>When the app crashes, a diagnostic report is sent so the fault can be fixed. It records what
-      the software was doing — the app version, the screen, the level — and never who was playing.
-      No nickname, friend code or account identifier is attached to a crash report.</p>
-
-    <h3>Product measurement</h3>
-    <p>The app records a small number of events about how the game itself is going — a round
-      started, a round finished, an item bought. These go to the app's own server, not to a
-      third-party analytics service. The events a build may send are restricted by a fixed list
-      written into the app, and the app sends no player identifier with them at all.</p>
-
-    <h2>Things this draft does not yet state</h2>
+    <!-- =============================================================== -->
     <div class="callout">
-      <p>A published policy will also need to cover, at minimum: the legal entity responsible, the
-        legal basis for processing, retention periods, the specific sub-processors used, how a
-        parent may make a request about their child's data, and the contact route for doing so.
-        None of those are stated here because none of them have been decided and recorded.</p>
+      <p><strong>The short version, for parents.</strong></p>
+      <p>Meerkat Universe has <strong>no advertising</strong>, <strong>no third-party analytics</strong>,
+        and <strong>no in-app purchases</strong>. It cannot access the camera, microphone, location,
+        photos or contacts. Children cannot type messages to each other, and cannot type a name —
+        names are chosen from a fixed list we wrote.</p>
+      <p>If your child never signs in, their progress stays on their device and we hold nothing about
+        them at all. Signing in is behind a parental gate, and is what lets progress survive a lost
+        or replaced device.</p>
     </div>
 
-    <h2>Contact</h2>
-    <p data-support-email>A contact address has not been published yet. See the
-      <a href="support.html">Support</a> page.</p>
+    <h2>1. Who is responsible for your data</h2>
+    <p>Meerkat Universe is operated by <strong>[TO BE COMPLETED — operator's legal name]</strong>,
+      an individual trading as the developer of the app ("we", "us").</p>
+    <p>Contact for any privacy question or request:</p>
+    <ul>
+      <li>Email: <strong>[TO BE COMPLETED — contact email]</strong></li>
+      <li>Postal address: <strong>[TO BE COMPLETED — contact address]</strong></li>
+    </ul>
+    <p>For the purposes of the UK and EU General Data Protection Regulation, we are the
+      <em>data controller</em> for the information described here.</p>
+
+    <h2>2. This app is intended for children</h2>
+    <p>Meerkat Universe is designed for young children, and is built to the requirements that follow
+      from that — including the Apple App Store Kids Category, the Google Play Families policy, the
+      United States Children's Online Privacy Protection Act (COPPA), the UK Age Appropriate Design
+      Code, and Article 8 of the UK and EU GDPR.</p>
+    <p>We have designed the app to collect as little as possible, so that in most cases there is
+      nothing meaningful to consent to. Where a child can create an account, that is placed behind a
+      parental gate intended to be completed by an adult.</p>
+
+    <h2>3. What the app collects, and why</h2>
+
+    <h3>3.1 If your child plays without signing in</h3>
+    <p>Everything stays on the device. Game progress, sound settings and a randomly generated player
+      identifier are stored locally and are never sent to us. <strong>We hold no information about a
+      player who has not signed in</strong>, other than the anonymous product and crash data in
+      sections 3.4 and 3.5.</p>
+
+    <h3>3.2 If your child signs in (behind the parental gate)</h3>
+    <p>Signing in with an Apple or Google account creates an account identifier, and lets progress be
+      saved so it survives a lost, replaced or reset device.</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>What</th><th>Why</th></tr>
+      <tr><td>An account identifier from Apple or Google</td><td>To recognise the same player across devices</td></tr>
+      <tr><td>Game progress — level reached, in-game Beetles earned and spent, items owned</td><td>So progress is not lost with the device</td></tr>
+      <tr><td>A device installation identifier and revision counters</td><td>To merge saves correctly and detect conflicts between devices</td></tr>
+    </table>
+    </div>
+
+    <h3>3.3 If your child uses the Social Hub</h3>
+    <p>The Social Hub lets a child appear on a leaderboard and add friends. Using it publishes a small
+      profile that other players can see:</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>What</th><th>Notes</th></tr>
+      <tr><td>A display name</td><td><strong>Chosen from a fixed list we wrote.</strong> A child cannot type a name, so a name can never contain personal information or anything we have not approved in advance.</td></tr>
+      <tr><td>A friend code</td><td>A randomly generated code used to add a friend. It identifies a player within the game only.</td></tr>
+      <tr><td>The level reached</td><td>What the leaderboard ranks.</td></tr>
+      <tr><td>A chosen picture</td><td>Selected from a fixed set of illustrations in the app. Not a photograph, and not uploaded.</td></tr>
+      <tr><td>Friend requests and friendships</td><td>Which players are connected to which.</td></tr>
+    </table>
+    </div>
+    <p><strong>There is no messaging of any kind in Meerkat Universe.</strong> Children cannot send
+      each other text, images, audio or anything else. There is no chat, no comments, no profile text
+      and no free-text field anywhere in the app.</p>
+
+    <h3>3.4 Crash reports</h3>
+    <p>When the app crashes, a diagnostic report is sent so the fault can be fixed. It records what
+      the <em>software</em> was doing — the app version, which screen was open, which game level was
+      running, whether the device was online — and never who was playing. No name, friend code or
+      account identifier is attached to a crash report.</p>
+
+    <h3>3.5 Product measurement</h3>
+    <p>The app records a small number of events describing how the game itself is going: a round
+      started, a round finished, an item bought with in-game Beetles. These are sent to our own
+      server, not to any third-party analytics service.</p>
+    <p>Two design choices are worth stating plainly, because they are enforced in the code rather
+      than by policy. The events a build may send are restricted to a fixed list written into the
+      app, so a new kind of event cannot be added without changing the app. And <strong>the app sends
+      no identifier with them at all</strong> — there is no field for a name, friend code, account or
+      device in the data that leaves the device. Where a player is signed in, our server records the
+      account identifier so that a deletion request can find and remove the events.</p>
+
+    <h2>4. What we never collect</h2>
+    <ul>
+      <li><strong>No advertising, and no advertising identifiers.</strong> The app contains no ads and no ad network.</li>
+      <li><strong>No third-party analytics or behavioural profiling.</strong> This is enforced by an automated check that fails the build if such a package is ever added.</li>
+      <li><strong>No location data.</strong></li>
+      <li><strong>No access to the camera, microphone, photos, contacts or files.</strong> The app requests none of these permissions.</li>
+      <li><strong>No free text.</strong> There is nowhere in the app a child can type something that another person will see.</li>
+      <li><strong>No purchases.</strong> There are no in-app purchases and no payment of any kind. Beetles are earned by playing and have no monetary value.</li>
+      <li><strong>No selling or sharing of data.</strong> We do not sell personal information, and we do not share it for advertising.</li>
+    </ul>
+
+    <h2>5. Our legal bases (UK and EU)</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Purpose</th><th>Legal basis</th></tr>
+      <tr><td>Saving and restoring game progress for a signed-in player</td><td>Performance of a contract — the service the user asked for</td></tr>
+      <tr><td>The Social Hub: leaderboard, friend codes, friends</td><td>Consent, given by a parent through the parental gate</td></tr>
+      <tr><td>Crash diagnostics</td><td>Legitimate interests — keeping the app working and safe for children</td></tr>
+      <tr><td>Product measurement</td><td>Legitimate interests — understanding whether the game works as intended</td></tr>
+      <tr><td>Security and abuse prevention</td><td>Legitimate interests</td></tr>
+    </table>
+    </div>
+    <p>Where consent is the basis, it can be withdrawn at any time by deleting the account (section 9),
+      which removes the published profile and the friendships with it.</p>
+
+    <h2>6. Parents: your rights and how to use them</h2>
+    <p>If you are the parent or guardian of a child who plays Meerkat Universe, you may at any time:</p>
+    <ul>
+      <li><strong>See</strong> what we hold about your child.</li>
+      <li><strong>Correct</strong> anything that is wrong.</li>
+      <li><strong>Delete</strong> the account and everything held with it — see section 9.</li>
+      <li><strong>Withdraw consent</strong> to the Social Hub.</li>
+      <li><strong>Refuse further collection</strong> — you may ask us to delete what we hold and to stop collecting anything more, while your child continues to play offline.</li>
+      <li><strong>Receive a copy</strong> of the data in a portable form.</li>
+      <li><strong>Complain</strong> to your local data protection authority. In the UK that is the Information Commissioner's Office; in the EU it is your national supervisory authority.</li>
+    </ul>
+    <p>To make any of these requests, email <strong>[TO BE COMPLETED — contact email]</strong>. We may
+      need to ask a question to confirm the request relates to your child's account — usually the
+      friend code shown in the app is enough. We will respond within one month.</p>
+
+    <h2>7. Who processes data for us</h2>
+    <p>We use Google's Firebase platform to run the service. Google acts as our processor, handling
+      data on our instructions and not for its own purposes:</p>
+    <ul>
+      <li><strong>Firebase Authentication</strong> — sign-in with Apple or Google</li>
+      <li><strong>Cloud Firestore</strong> and <strong>Cloud Functions</strong> — saved progress, the Social Hub, product events</li>
+      <li><strong>Firebase Crashlytics</strong> — crash diagnostics</li>
+      <li><strong>Firebase App Check</strong> — confirming requests come from a genuine copy of the app</li>
+    </ul>
+    <p>Apple and Google also act as controllers in their own right for the sign-in you choose and for
+      the app store you downloaded from. Their own privacy policies apply to that.</p>
+    <p>We do not use any other third party, and we have no advertising, marketing or data-broker
+      relationships.</p>
+
+    <h2>8. Where data is stored, and for how long</h2>
+    <p>Data is stored on Google's infrastructure and may be processed outside your country, including
+      in the United States. Transfers rely on the safeguards Google provides for Firebase, including
+      the European Commission's Standard Contractual Clauses.</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>What</th><th>Kept for</th></tr>
+      <tr><td>Saved progress and the published profile</td><td>Until the account is deleted</td></tr>
+      <tr><td>Friend requests and friendships</td><td>Until the account is deleted, or the friend is removed</td></tr>
+      <tr><td>Product events</td><td>400 days, then deleted automatically</td></tr>
+      <tr><td>Crash reports</td><td>As long as Firebase Crashlytics retains them (currently 90 days)</td></tr>
+      <tr><td>Data on the device</td><td>Until the app is deleted or the player signs out</td></tr>
+    </table>
+    </div>
+
+    <h2>9. Deleting an account</h2>
+    <p>Account deletion is available in the app itself: <strong>Settings → Account → Delete
+      Account</strong>. It removes the saved progress, the published profile, the friend code and the
+      friendships. It cannot be undone.</p>
+    <p>You can also ask us to delete an account by email, at
+      <strong>[TO BE COMPLETED — contact email]</strong>. See
+      <a href="delete-account.html">Delete Account</a> for the full description.</p>
+
+    <h2>10. Security</h2>
+    <p>Data in transit is encrypted. Access to saved progress is restricted to the account it belongs
+      to, enforced by server-side rules rather than by the app. The player directory is not readable
+      in bulk by any client. We keep the number of people who can reach production data as small as
+      possible — currently one.</p>
+    <p>No system is perfectly secure. If a breach affects your child's data and presents a risk, we
+      will notify you and the relevant authority as the law requires.</p>
+
+    <h2>11. Changes to this policy</h2>
+    <p>If we change what the app collects, we will update this page and change the date at the top.
+      Where a change materially affects children's data, we will seek fresh parental consent rather
+      than rely on this page having changed.</p>
+
+    <h2 id="assumptions">What this policy assumes</h2>
+    <div class="placeholder">
+      <p><strong>Two changes to the app must ship before this document is accurate.</strong></p>
+      <p><strong>1. Names must be selectable only.</strong> Section 3.3 states that a child cannot
+        type a name. At the time of writing the app still allows a typed name of up to 12
+        characters, which is user-generated content published to other children with no filtering.</p>
+      <p><strong>2. The parental gate must be switched on.</strong> Sections 2 and 5 rely on it. At
+        the time of writing the flag <code>kParentalGateEnabled</code> is <code>false</code>, so
+        every gate answers "yes" immediately without asking.</p>
+      <p>Publishing this policy before both changes ship would describe the app inaccurately, which
+        is worse than publishing nothing.</p>
+    </div>
+
+    <h2>12. Contact</h2>
+    <p>Questions about this policy, or about your child's data:
+      <strong>[TO BE COMPLETED — contact email]</strong>.</p>
   </div>
 </main>
 
