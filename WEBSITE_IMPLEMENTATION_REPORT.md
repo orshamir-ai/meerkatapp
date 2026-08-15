@@ -106,6 +106,15 @@ Seven real captures of the running game, content unretouched — CSS only rounds
 a border and shadow. **No device bezel:** bezels date badly, add weight, and imply a specific
 handset.
 
+The three gameplay shots were chosen by the owner from a set of **thirteen candidates** — ten
+additional captures were staged specifically so the choice could be made from a real spread rather
+than from whatever the first pass produced. The three that won lead the carousel because each shows
+a different thing: tension (one fruit left, three intruders at the basket), consequence (a pinecone
+connecting, a raccoon knocked off the branch, the beetle reward), and a named mechanic (a Swift Paws
+buff card). They were picked on *legibility at thumbnail size* — the arena is a single fixed
+composition, so variety comes from effects and HUD state rather than framing, and several otherwise
+good candidates showed effects that simply did not read small.
+
 One caveat worth recording: the leaderboard shot was taken on a **separate level-74 account**,
 because `FakeSocialService`'s NPCs top out at level 118 and the shot profile is level 150, which
 would have ranked the player #1 and made the board look staged.
@@ -181,7 +190,7 @@ One harness note worth recording: Chrome enforces a 500 px minimum window on mac
 like a severe overflow bug that did not exist. Everything was re-shot through an exact-size iframe
 harness, which gives the inner document a true narrow layout viewport.
 
-**Four real defects were found by rendering, each of a kind a source review passes:**
+**Five real defects were found by rendering, each of a kind a source review passes:**
 
 1. **The desktop nav was dead.** `.topnav { display: none }` was written *after* the 960 px media
    query that sets `display: block` — identical specificity, so the later rule won. Base styles now
@@ -199,6 +208,12 @@ harness, which gives the inner document a true narrow layout viewport.
 4. **The rewrite's first form had its own bug.** Testing "is it on screen *now*" leaves anything
    scrolled *past* hidden forever — exactly what a deep link or a restored scroll position lands you
    in. The test is now "has it reached the trigger line".
+5. **The first two screenshots were unreachable on desktop.** `justify-content: center` on a scroll
+   container centres overflowing content in *both* directions, and `scrollLeft` cannot go negative —
+   so the start of the track was clipped off the left edge with no way to scroll to it. Now
+   `justify-content: safe center`, which falls back to start alignment whenever the content
+   overflows. Browsers that do not know the keyword drop the declaration and get start alignment
+   too, which is the wanted outcome anyway.
 
 Also corrected in QA: alt text that said the guardian holds "beetles" when the art shows a pinecone;
 a feature-card icon of three stacked lines that read as a hamburger menu (now a left-right swipe,
@@ -239,4 +254,3 @@ A custom domain is a separate, deliberate step and has not been taken.
 | Support email | Set `supportEmail` in the same file |
 | Privacy policy and terms | Must be drafted and reviewed; drafts are marked and `noindex` |
 | Wide hero crop, OG image, wordmark | Recorded in the design plan; none generated |
-| Expanded screenshot set | Ten additional gameplay captures in progress for you to choose from |

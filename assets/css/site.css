@@ -482,7 +482,15 @@ span.store-btn { opacity: .92; cursor: default; }
   .cards { grid-template-columns: repeat(4, 1fr); }
 
   .shots {
-    justify-content: center;
+    /* `safe` is load-bearing, not decoration. Plain `justify-content: center`
+       on a SCROLL container centres overflowing content in both directions —
+       and `scrollLeft` cannot go negative, so the first slides get clipped off
+       the left edge with no way to reach them. `safe` falls back to start
+       alignment the moment the content overflows, which here is always (seven
+       250px slides against a 1100px cap). Browsers that do not know the keyword
+       drop the whole declaration and get start alignment too, which is the
+       outcome we want anyway. */
+    justify-content: safe center;
     padding-inline: 0;
     margin-inline: 0;
     scroll-snap-type: x proximity;   /* a mouse should not be forced to snap */
