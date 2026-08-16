@@ -45,9 +45,9 @@
         and <strong>no in-app purchases</strong>. It cannot access the camera, microphone, location,
         photos or contacts. Children cannot type messages to each other, and cannot type a name —
         names are chosen from a fixed list we wrote.</p>
-      <p>If your child never signs in, their progress stays on their device and we hold nothing about
-        them at all. Signing in is behind a parental gate, and is what lets progress survive a lost
-        or replaced device.</p>
+      <p><strong>A player under 13 gets the whole game and sends us nothing at all</strong> — their
+        progress lives on the device, and there is no account to create. Players 13 and over can
+        optionally sign in, which is what lets progress survive a lost or replaced device.</p>
     </div>
 
     <h2>1. Who is responsible for your data</h2>
@@ -61,14 +61,31 @@
     <p>For the purposes of the UK and EU General Data Protection Regulation, we are the
       <em>data controller</em> for the information described here.</p>
 
-    <h2>2. This app is intended for children</h2>
-    <p>Meerkat Universe is designed for young children, and is built to the requirements that follow
-      from that — including the Apple App Store Kids Category, the Google Play Families policy, the
-      United States Children's Online Privacy Protection Act (COPPA), the UK Age Appropriate Design
-      Code, and Article 8 of the UK and EU GDPR.</p>
-    <p>We have designed the app to collect as little as possible, so that in most cases there is
-      nothing meaningful to consent to. Where a child can create an account, that is placed behind a
-      parental gate intended to be completed by an adult.</p>
+    <h2>2. Who this app is for, and what changes by age</h2>
+    <p>Meerkat Universe is a game anyone can play, and it is designed to appeal to young children. We
+      treat it as <em>directed to children</em> for legal purposes whatever store category it appears
+      in, and build it to the requirements that follow — the United States Children's Online Privacy
+      Protection Act (COPPA), the UK Age Appropriate Design Code, and Article 8 of the UK and EU
+      GDPR.</p>
+    <p><strong>The app asks once how old the player is, and that answer changes what it collects.</strong>
+      We do not store a date of birth — only whether the player told us they are under 13.</p>
+    <div class="table-wrap">
+    <table>
+      <tr><th>If the player is…</th><th>What happens</th></tr>
+      <tr><td><strong>Under 13</strong></td><td><strong>The whole game, and nothing personal ever leaves the device.</strong> Every level, the shop and all the tutorials, with progress saved on the device itself. No account, no cloud save, no leaderboard and no friends — so there is nothing about that child on our servers at all.</td></tr>
+      <tr><td><strong>13 or over</strong></td><td>The same game, and optionally an account: cloud save so progress survives a lost device, and the Social Hub described in section 3.3.</td></tr>
+    </table>
+    </div>
+    <p><strong>Why it works this way.</strong> Asking a player's age is not the same as asking a
+      parent's permission, and we are not willing to treat it as though it were. So instead of
+      collecting a child's information and then trying to justify it, the app simply does not collect
+      any: under 13, there is no account to create and no data to send. If the answer is corrected
+      later to under 13, any account is signed out and the published profile removed.</p>
+    <p class="doc__note"><strong>An assumption a reviewer should check.</strong> This design rests on
+      the position that collecting nothing personal from a self-declared under-13 player requires no
+      verifiable parental consent, because there is nothing to consent to. That is the intended
+      reading of COPPA's requirements, but it has not been reviewed by a lawyer, and it is the single
+      most important thing to confirm before this app is submitted anywhere.</p>
 
     <h2>3. What the app collects, and why</h2>
 
@@ -216,15 +233,21 @@
 
     <h2 id="assumptions">What this policy assumes</h2>
     <div class="placeholder">
-      <p><strong>Two changes to the app must ship before this document is accurate.</strong></p>
-      <p><strong>1. Names must be selectable only.</strong> Section 3.3 states that a child cannot
-        type a name. At the time of writing the app still allows a typed name of up to 12
-        characters, which is user-generated content published to other children with no filtering.</p>
-      <p><strong>2. The parental gate must be switched on.</strong> Sections 2 and 5 rely on it. At
-        the time of writing the flag <code>kParentalGateEnabled</code> is <code>false</code>, so
-        every gate answers "yes" immediately without asking.</p>
-      <p>Publishing this policy before both changes ship would describe the app inaccurately, which
-        is worse than publishing nothing.</p>
+      <p><strong>One change to the app must ship before this document is accurate, and one earlier
+        assumption has been superseded.</strong></p>
+      <p><strong>Still outstanding — the age screen.</strong> Section 2 describes an app that asks
+        the player's age once and collects nothing personal from anyone under 13. That is being
+        built; until it ships, this policy describes an app that does not yet exist.</p>
+      <p><strong>Superseded — the parental gate.</strong> An earlier draft of this policy relied on a
+        parental gate in front of account creation. That was an <em>Apple Kids Category</em>
+        requirement rather than a COPPA one, and the app is no longer listing in that category. The
+        age branch replaces it: a child cannot reach account creation at all, so there is nothing for
+        a gate to stand in front of. The gate remains in the codebase behind a flag, because
+        returning to the Kids Category should be a decision rather than a rewrite.</p>
+      <p><strong>Already shipped.</strong> Names are chosen from a fixed list — a child cannot type
+        one — which is what makes section 3.3's claim about display names true.</p>
+      <p>Publishing this before the age screen ships would describe the app inaccurately, which is
+        worse than publishing nothing.</p>
     </div>
 
     <h2>12. Contact</h2>
