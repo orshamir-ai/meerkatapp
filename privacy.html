@@ -28,11 +28,8 @@
     <p class="doc__updated">Draft for review — not yet in force.</p>
 
     <div class="placeholder">
-      <p><strong>This draft is not yet published, and must be reviewed before it is.</strong></p>
-      <p>Everything below describes what the app actually does, taken from its source code. Three
-        things still need to be supplied, and are marked <strong>[TO BE COMPLETED]</strong> in the
-        text: the operator's legal name, a contact address, and a contact email. Two changes to the
-        app itself are also assumed and must ship before this is accurate — see
+      <p><strong>One value is still missing before this is complete — a postal contact address.</strong></p>
+      <p>Everything below describes what the app actually does, taken from its source code. The operator's name, the contact email and the age branch are all now in place; the one remaining gap is marked <strong>[TO BE COMPLETED]</strong> in the text. See also
         <a href="#assumptions">What this policy assumes</a>.</p>
       <p>This document has not been reviewed by a lawyer. Because the app is intended for children,
         a review is strongly recommended before submission to any app store.</p>
@@ -51,7 +48,7 @@
     </div>
 
     <h2>1. Who is responsible for your data</h2>
-    <p>Meerkat Universe is operated by <strong>[TO BE COMPLETED — operator's legal name]</strong>,
+    <p>Meerkat Universe is operated by <strong>Or Shamir</strong>,
       an individual trading as the developer of the app ("we", "us").</p>
     <p>Contact for any privacy question or request:</p>
     <ul>
@@ -231,24 +228,25 @@
       Where a change materially affects children's data, we will seek fresh parental consent rather
       than rely on this page having changed.</p>
 
-    <h2 id="assumptions">What this policy assumes</h2>
-    <div class="placeholder">
-      <p><strong>One change to the app must ship before this document is accurate, and one earlier
-        assumption has been superseded.</strong></p>
-      <p><strong>Still outstanding — the age screen.</strong> Section 2 describes an app that asks
-        the player's age once and collects nothing personal from anyone under 13. That is being
-        built; until it ships, this policy describes an app that does not yet exist.</p>
-      <p><strong>Superseded — the parental gate.</strong> An earlier draft of this policy relied on a
-        parental gate in front of account creation. That was an <em>Apple Kids Category</em>
-        requirement rather than a COPPA one, and the app is no longer listing in that category. The
-        age branch replaces it: a child cannot reach account creation at all, so there is nothing for
-        a gate to stand in front of. The gate remains in the codebase behind a flag, because
-        returning to the Kids Category should be a decision rather than a rewrite.</p>
-      <p><strong>Already shipped.</strong> Names are chosen from a fixed list — a child cannot type
-        one — which is what makes section 3.3's claim about display names true.</p>
-      <p>Publishing this before the age screen ships would describe the app inaccurately, which is
-        worse than publishing nothing.</p>
-    </div>
+    <h2 id="assumptions">What this policy assumed, and what has since shipped</h2>
+    <p>This section is kept rather than deleted, so the record of what the policy once promised in
+      advance survives alongside what is now true.</p>
+    <p><strong>The age screen has shipped</strong> (schema v22). Section 2 describes an app that
+      asks the player's age once and collects nothing personal from anyone under 13, and that is now
+      what the app does: a player who declares under 13 gets the whole game on the device, with no
+      account, no sign-in and no Social Hub. The answer is stored on the device only — never
+      uploaded, and not part of any save that syncs between devices.</p>
+    <p><strong>Superseded — the parental gate.</strong> An earlier draft relied on a parental gate
+      in front of account creation. That was an Apple Kids Category requirement rather than a COPPA
+      one, and the app no longer lists in that category. The age branch replaces it: a child cannot
+      reach account creation at all, so there is nothing for a gate to stand in front of. The gate
+      remains in front of the three things that still leave the app — Help &amp; Legal, the app
+      store link, and signing out — because handing a child to a browser unchallenged is a bad idea
+      whatever category an app lists in.</p>
+    <p><strong>Also shipped — display names.</strong> Names are chosen from a fixed list written in
+      advance; a child cannot type one, and there is no free-text field anywhere in the app. That is
+      what makes section 3.3's claim true, and it is structural rather than a promise to
+      moderate.</p>
 
     <h2>12. Contact</h2>
     <p>Questions about this policy, or about your child's data:
