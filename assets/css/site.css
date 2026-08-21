@@ -65,7 +65,30 @@ body {
    the CSS resizes by width alone would be stretched to the attribute's height.
    `height: auto` neutralises the hint while keeping the reserved aspect ratio.
    `.hero__art` overrides it at class specificity, which is intended. */
-img { max-width: 100%; height: auto; display: block; }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  /* ── DRAG, NOT SELECTION, AND THE DIFFERENCE IS DELIBERATE ──────────────
+   *
+   * Stops the accidental drag-to-desktop and drag-into-another-tab. That is
+   * ALL it stops, and it is all it claims to: the file is already on the
+   * visitor's machine before any of this runs, and `curl` fetches it whatever
+   * this rule says. It is here because it costs a real user nothing — nobody
+   * legitimately drags the hero out of the page.
+   *
+   * `user-select` is scoped to IMAGES ONLY and must never be extended to text.
+   * Blocking selection would stop a parent copying the support address, and
+   * stop them selecting, saving or printing the privacy policy and terms —
+   * documents they have every reason to keep. It also breaks screen readers
+   * and browser translation. The real protection for the art is that these are
+   * WEB-resolution exports (the 1536 px originals are not in this repo) plus
+   * the copyright notice in the footer.
+   */
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
 
 h1, h2, h3 { line-height: 1.15; text-wrap: balance; margin: 0 0 .5em; font-weight: 800; }
 h2 { font-size: clamp(1.5rem, 5.2vw, 2.1rem); }

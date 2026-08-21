@@ -2,6 +2,34 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+    <!-- ── CONTENT SECURITY POLICY ────────────────────────────────────────
+         A `<meta>` rather than a header because GitHub Pages cannot set
+         headers. This is the STRICT form, which is only achievable because the
+         site makes ZERO third-party requests — no CDN, no fonts, no analytics.
+         Nothing here needs `'unsafe-inline'`: there are no inline <script>
+         bodies and no on* handlers.
+
+         `connect-src 'none'` and `form-action 'none'` are honest — the site
+         never fetches and never submits — and they are what turns any future
+         XSS foothold from "exfiltrate" into "nothing happens".
+
+         `frame-ancestors 'none'` is the one that addresses a real risk rather
+         than a theoretical one: it stops anyone embedding these pages,
+         particularly the privacy policy and terms, inside their own site and
+         passing them off as theirs. -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self';
+                   img-src 'self' data:;
+                   style-src 'self';
+                   script-src 'self';
+                   font-src 'self';
+                   connect-src 'none';
+                   form-action 'none';
+                   frame-ancestors 'none';
+                   base-uri 'none';
+                   object-src 'none';
+                   upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Privacy Policy — Meerkat Universe</title>
 <meta name="description" content="How Meerkat Universe handles data, and what parents need to know.">

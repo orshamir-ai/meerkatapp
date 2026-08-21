@@ -36,7 +36,12 @@
       a.className = span.className;
       a.href = url;
       a.rel = 'noopener';
-      a.innerHTML = span.innerHTML;
+      // MOVED, NOT COPIED AS MARKUP. This was `a.innerHTML = span.innerHTML`,
+      // which is the only DOM sink in this file — harmless today because the
+      // source is static markup in the same document, and exactly the line
+      // that would become a vector the day that markup turns dynamic. Moving
+      // the nodes is also what lets the CSP below carry no `'unsafe-inline'`.
+      while (span.firstChild) a.appendChild(span.firstChild);
       // The placeholder's label carries "coming soon"; a live link must not.
       a.setAttribute('aria-label', span.getAttribute('data-label') || '');
       span.parentNode.replaceChild(a, span);
