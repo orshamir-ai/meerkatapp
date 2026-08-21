@@ -549,3 +549,11 @@ span.store-btn { opacity: .92; cursor: default; }
      the landing page has one job and the legal links live in the footer. */
   .topnav { display: block; }
 }
+
+
+/* A single lead paragraph needs more air beneath it than the default.
+   It was an inline `style="margin-bottom:1.6rem"`, which the site's own strict
+   CSP (`style-src 'self'`, no `'unsafe-inline'`) BLOCKS — so the spacing it
+   asked for was never applied and the browser logged a violation on every
+   load. A class is what a CSP-clean site has instead. */
+.section__lead--spaced { margin-bottom: 1.6rem; }

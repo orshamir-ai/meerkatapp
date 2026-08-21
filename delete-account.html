@@ -81,13 +81,21 @@
 
     <h2>What deletion removes</h2>
     <ul>
-      <li>The saved game progress held for the account.</li>
+      <li>The saved game progress held for the account, and its history.</li>
       <li>The published profile — display name, friend code, level and picture — so the player no
         longer appears on the leaderboard or in player search.</li>
       <li>Friendships and any pending friend requests.</li>
+      <li>The product-measurement records held for the account (see section 3.5 of the
+        <a href="privacy.html">Privacy Policy</a>).</li>
+      <li><strong>The account record itself</strong> — the sign-in held by Firebase Authentication,
+        including the email address Apple or Google supplied when the player signed in. Nothing is
+        kept in order to recognise the player later.</li>
     </ul>
-    <p>Crash reports and product-measurement records are described in the
-      <a href="privacy.html">Privacy Policy</a>, along with how long each is kept.</p>
+    <p>Signing in again afterwards with the same Apple or Google account creates a new account that
+      starts from nothing. It is not the old one recovered.</p>
+    <p>Crash reports are described in the <a href="privacy.html">Privacy Policy</a>, along with how
+      long they are kept. They are not attached to an account, so there is nothing in them to find
+      and remove for a particular player.</p>
 
     <div class="callout">
       <p>Deletion is <strong>not reversible</strong>. Progress removed this way cannot be restored,

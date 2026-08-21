@@ -67,9 +67,17 @@
         and <strong>no in-app purchases</strong>. It cannot access the camera, microphone, location,
         photos or contacts. Children cannot type messages to each other, and cannot type a name —
         names are chosen from a fixed list we wrote.</p>
-      <p><strong>A player under 13 gets the whole game and sends us nothing at all</strong> — their
-        progress lives on the device, and there is no account to create. Players 13 and over can
-        optionally sign in, which is what lets progress survive a lost or replaced device.</p>
+      <p><strong>A player under 13 gets the whole game and no account</strong> — their progress
+        lives on the device, there is nothing to sign in to, and no leaderboard or friends. We also
+        record nothing about how they play: the product measurement described in section 3.5 is
+        switched off unless the player has told us they are 13 or over, and the app behaves that way
+        until the question has been answered.</p>
+      <p>One thing still leaves the device whatever the answer: if the app crashes, it sends a
+        report so the fault can be fixed. That report describes the <em>software</em> — never the
+        player. It carries no name, no friend code and no account. Section 3.4 says exactly what is
+        in one.</p>
+      <p>Players 13 and over can optionally sign in, which is what lets progress survive a lost or
+        replaced device.</p>
     </div>
 
     <h2>1. Who is responsible for your data</h2>
@@ -92,19 +100,25 @@
       Protection Act (COPPA), the UK Age Appropriate Design Code, and Article 8 of the UK and EU
       GDPR.</p>
     <p><strong>The app asks once how old the player is, and that answer changes what it collects.</strong>
-      We do not store a date of birth — only whether the player told us they are under 13.</p>
+      We do not store a date of birth — only whether the player told us they are under 13. The
+      answer is kept on the device and is never uploaded.</p>
+    <p><strong>Before the question has been answered, the app behaves as though the answer were
+      "under 13".</strong> That is deliberate: an unanswered question is not permission, and the
+      cautious reading is the only safe one when we do not yet know who is holding the phone.</p>
     <div class="table-wrap">
     <table>
       <tr><th>If the player is…</th><th>What happens</th></tr>
-      <tr><td><strong>Under 13</strong></td><td><strong>The whole game, and nothing personal ever leaves the device.</strong> Every level, the shop and all the tutorials, with progress saved on the device itself. No account, no cloud save, no leaderboard and no friends — so there is nothing about that child on our servers at all.</td></tr>
+      <tr><td><strong>Under 13</strong></td><td><strong>The whole game, and no account.</strong> Every level, the shop and all the tutorials, with progress saved on the device itself. No account, no cloud save, no leaderboard and no friends. The product measurement in section 3.5 is switched off, so we hold no record of how that child plays. Crash reports (section 3.4) are still sent, and carry nothing that identifies a player.</td></tr>
       <tr><td><strong>13 or over</strong></td><td>The same game, and optionally an account: cloud save so progress survives a lost device, and the Social Hub described in section 3.3.</td></tr>
     </table>
     </div>
     <p><strong>Why it works this way.</strong> Asking a player's age is not the same as asking a
       parent's permission, and we are not willing to treat it as though it were. So instead of
       collecting a child's information and then trying to justify it, the app simply does not collect
-      any: under 13, there is no account to create and no data to send. If the answer is corrected
-      later to under 13, any account is signed out and the published profile removed.</p>
+      any: under 13, there is no account to create, and no product-measurement data is sent. A
+      crash report is the one exception, and section&nbsp;3.4 says what is in one and why it is
+      treated differently. If the answer is corrected later to under 13, any account is signed out
+      and the published profile removed.</p>
     <p class="doc__note"><strong>An assumption a reviewer should check.</strong> This design rests on
       the position that collecting nothing personal from a self-declared under-13 player requires no
       verifiable parental consent, because there is nothing to consent to. That is the intended
@@ -114,10 +128,23 @@
     <h2>3. What the app collects, and why</h2>
 
     <h3>3.1 If your child plays without signing in</h3>
-    <p>Everything stays on the device. Game progress, sound settings and a randomly generated player
-      identifier are stored locally and are never sent to us. <strong>We hold no information about a
-      player who has not signed in</strong>, other than the anonymous product and crash data in
-      sections 3.4 and 3.5.</p>
+    <p>Game progress, sound settings and a randomly generated player identifier are stored on the
+      device and are never sent to us. There is no cloud save, no published profile, no leaderboard
+      and no friends, so <strong>we hold no game data and no profile for a player who has not signed
+      in</strong>.</p>
+    <p>Two things are outside that sentence, and both are described below rather than tucked into
+      it. Crash reports (section 3.4) are sent whether or not anyone has signed in. And where the
+      player has told us they are 13 or over, the product-measurement events in section 3.5 are
+      sent even if they never sign in — recorded, as section 3.5 explains, against the anonymous
+      account identifier described immediately below. Under 13, and before the age question is
+      answered, neither the sign-in nor those events happen at all.</p>
+    <p class="doc__note"><strong>An assumption a reviewer should check.</strong> Playing without
+      signing in still creates an anonymous entry with Firebase Authentication — a random identifier
+      with no name, no email address and no contact information of any kind attached to it. Our
+      position is that this is support for internal operations rather than personal information
+      collected from a child: it is the key the device's own save is tied to, no saved progress is
+      ever uploaded behind it, and no published profile is ever created for it. Nothing about the
+      child reaches a server through it.</p>
 
     <h3>3.2 If your child signs in (13 and over)</h3>
     <p>Signing in with an Apple or Google account creates an account identifier, and lets progress be
@@ -152,18 +179,37 @@
     <p>When the app crashes, a diagnostic report is sent so the fault can be fixed. It records what
       the <em>software</em> was doing — the app version, which screen was open, which game level was
       running, whether the device was online — and never who was playing. No name, friend code or
-      account identifier is attached to a crash report.</p>
+      account identifier is attached to a crash report. The list of details a report may carry is
+      fixed in the app's own code, and any text in a report is stripped of anything that looks like
+      an identifier before it is sent.</p>
+    <p><strong>Crash reports are sent whatever the age answer was</strong>, and we have kept it that
+      way on purpose. A crash report is a description of our software failing, not a record of a
+      child; a five-year-old cannot read an error message or tell us what went wrong, so this is the
+      only way a fault that only happens on their device ever gets fixed. Firebase Crashlytics
+      attaches an identifier for that installation of the app, so one fault reported many times is
+      counted once — it is not linked to an account, a name or a friend code, and we never associate
+      it with a player.</p>
 
     <h3>3.5 Product measurement</h3>
     <p>The app records a small number of events describing how the game itself is going: a round
       started, a round finished, an item bought with in-game Beetles. These are sent to our own
       server, not to any third-party analytics service.</p>
-    <p>Two design choices are worth stating plainly, because they are enforced in the code rather
-      than by policy. The events a build may send are restricted to a fixed list written into the
-      app, so a new kind of event cannot be added without changing the app. And <strong>the app sends
-      no identifier with them at all</strong> — there is no field for a name, friend code, account or
-      device in the data that leaves the device. Where a player is signed in, our server records the
-      account identifier so that a deletion request can find and remove the events.</p>
+    <p><strong>They are only sent by a player who has told us they are 13 or over.</strong> Under 13
+      — and before the age question has been answered — the app sends none of them. Events that were
+      recorded while it had no permission to send them are discarded rather than held back, so
+      answering "13 or over" later does not release a backlog gathered beforehand.</p>
+    <p>Two further design choices are worth stating plainly, because they are enforced in the code
+      rather than by policy. The events a build may send are restricted to a fixed list written into
+      the app, so a new kind of event cannot be added without changing the app. And the app sends no
+      identifier with them — there is no field for a name, friend code, account or device in the
+      data that leaves the device.</p>
+    <p><strong>Our server does record an account identifier alongside them, and this is worth being
+      exact about.</strong> The events arrive without one, and the server adds the identifier of the
+      account the request came from before storing them. So the stored record <em>is</em> linked to a
+      user: for a signed-in player that is their account, and for a player who is not signed in it is
+      the anonymous entry described in section 3.1. That is what makes a deletion request able to
+      find and remove them, and it is why we disclose app-activity data to the app stores as
+      collected <em>and linked to the user</em> rather than as anonymous.</p>
 
     <h2>4. What we never collect</h2>
     <ul>
@@ -183,7 +229,7 @@
       <tr><td>Saving and restoring game progress for a signed-in player</td><td>Performance of a contract — the service the user asked for</td></tr>
       <tr><td>The Social Hub: leaderboard, friend codes, friends</td><td>Consent, given by the player — who must have declared they are 13 or over to reach the Social Hub at all</td></tr>
       <tr><td>Crash diagnostics</td><td>Legitimate interests — keeping the app working and safe for children</td></tr>
-      <tr><td>Product measurement</td><td>Legitimate interests — understanding whether the game works as intended</td></tr>
+      <tr><td>Product measurement (13 and over only)</td><td>Legitimate interests — understanding whether the game works as intended</td></tr>
       <tr><td>Security and abuse prevention</td><td>Legitimate interests</td></tr>
     </table>
     </div>
@@ -226,6 +272,7 @@
     <div class="table-wrap">
     <table>
       <tr><th>What</th><th>Kept for</th></tr>
+      <tr><td>The account itself — the Apple or Google sign-in held by Firebase Authentication</td><td>Until the account is deleted</td></tr>
       <tr><td>Saved progress and the published profile</td><td>Until the account is deleted</td></tr>
       <tr><td>Friend requests and friendships</td><td>Until the account is deleted, or the friend is removed</td></tr>
       <tr><td>Product events</td><td>400 days, then deleted automatically</td></tr>
@@ -236,8 +283,11 @@
 
     <h2>9. Deleting an account</h2>
     <p>Account deletion is available in the app itself: <strong>Settings → Account → Delete
-      Account</strong>. It removes the saved progress, the published profile, the friend code and the
-      friendships. It cannot be undone.</p>
+      Account</strong>. It removes the saved progress and its history, the published profile, the
+      friend code, the friendships, the product-measurement records held for the account, and
+      <strong>the account record itself</strong> — the sign-in held by Firebase Authentication,
+      including the email address Apple or Google supplied. Nothing is kept in order to recognise
+      the player later. It cannot be undone.</p>
     <p>You can also ask us to delete an account by email, at
       <a href="mailto:meerkatuniverse.support@gmail.com">meerkatuniverse.support@gmail.com</a>. See
       <a href="delete-account.html">Delete Account</a> for the full description.</p>
@@ -270,6 +320,18 @@
       remains in front of the three things that still leave the app — Help &amp; Legal, the app
       store link, and signing out — because handing a child to a browser unchallenged is a bad idea
       whatever category an app lists in.</p>
+    <p><strong>Also shipped — the product-measurement age gate.</strong> An earlier version of
+      this page said a player under 13 "sends us nothing at all", while the app's own section 3.1
+      admitted to product and crash data underneath it — the summary and the detail disagreed, and
+      the summary was the part most people read. Both were changed, in the direction that collects
+      less: the app now switches product measurement off for under-13 and unanswered players and
+      discards anything gathered before permission existed, and this page no longer says "nothing at
+      all" about something that still sends a crash report. Crash reporting was deliberately
+      <em>not</em> gated, for the reason given in section 3.4, and the page says so plainly instead
+      of leaving it to be inferred.</p>
+    <p><strong>Also shipped — deletion of the account record.</strong> Deleting an account used to
+      leave the sign-in itself with Firebase Authentication, and with it the email address the
+      provider supplied. It no longer does; section 9 describes what deletion now removes.</p>
     <p><strong>Also shipped — display names.</strong> Names are chosen from a fixed list written in
       advance; a child cannot type one, and there is no free-text field anywhere in the app. That is
       what makes section 3.3's claim true, and it is structural rather than a promise to
