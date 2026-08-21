@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+    <!-- ── CONTENT SECURITY POLICY ────────────────────────────────────────
+         A `<meta>` rather than a header because GitHub Pages cannot set
+         headers. This is the STRICT form, which is only achievable because the
+         site makes ZERO third-party requests — no CDN, no fonts, no analytics.
+         Nothing here needs `'unsafe-inline'`: there are no inline <script>
+         bodies and no on* handlers.
+
+         `connect-src 'none'` and `form-action 'none'` are honest — the site
+         never fetches and never submits — and they are what turns any future
+         XSS foothold from "exfiltrate" into "nothing happens".
+
+         `frame-ancestors 'none'` is the one that addresses a real risk rather
+         than a theoretical one: it stops anyone embedding these pages,
+         particularly the privacy policy and terms, inside their own site and
+         passing them off as theirs. -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self';
+                   img-src 'self' data:;
+                   style-src 'self';
+                   script-src 'self';
+                   font-src 'self';
+                   connect-src 'none';
+                   form-action 'none';
+                   frame-ancestors 'none';
+                   base-uri 'none';
+                   object-src 'none';
+                   upgrade-insecure-requests">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Friend Invited You — Meerkat Universe</title>
+<meta name="description" content="Someone shared their Meerkat Universe friend code with you. Here is how to add them.">
+<meta name="theme-color" content="#FFF3DC">
+<link rel="icon" href="../favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="../assets/img/icon-180.png">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="page-header">
+  <div class="wrap">
+    <img src="../assets/img/icon-180.png" width="40" height="40" alt="">
+    <a class="home-link" href="../index.html">Meerkat Universe</a>
+  </div>
+</header>
+
+<main id="main" class="doc">
+  <div class="wrap">
+    <h1>A friend invited you</h1>
+    <p class="doc__updated">Someone wants to add you in Meerkat Universe.</p>
+
+    <!-- THE CODE BLOCK IS HIDDEN UNTIL JAVASCRIPT VALIDATES ONE.
+         Not a placeholder that gets filled: a page that renders an empty code
+         box to everyone who opens /invite/ with no code is worse than one that
+         simply does not mention codes. `hidden` is removed by invite.js only
+         when a well-formed code is present. -->
+    <div class="callout" id="invite-code-block" hidden>
+      <p>Their friend code is:</p>
+      <p><strong><code id="invite-code"></code></strong></p>
+    </div>
+
+    <h2>How to add them</h2>
+    <ol>
+      <li>Install Meerkat Universe on your phone or tablet.</li>
+      <li>Open <strong>Friends</strong> from the home screen.</li>
+      <li>Choose <strong>Find</strong> and enter the friend code above.</li>
+      <li>Send the request. They will see it next time they play.</li>
+    </ol>
+
+    <div class="callout">
+      <p>Friends and the leaderboard are for players 13 and over. Younger players get the whole
+        game &mdash; every level, the shop and all the Beetles &mdash; on their own device, without
+        an account.</p>
+    </div>
+
+    <h2>Get the game</h2>
+    <div class="store-row">
+      <span class="store-btn" data-store="appStore"
+            aria-label="Download on the App Store &mdash; coming soon"
+            data-label="Download on the App Store">
+        <span class="store-btn__lines">
+          <span class="store-btn__small">Download on the</span>
+          <span class="store-btn__big">App Store</span>
+        </span>
+      </span>
+
+      <span class="store-btn" data-store="googlePlay"
+            aria-label="Get it on Google Play &mdash; coming soon"
+            data-label="Get it on Google Play">
+        <span class="store-btn__lines">
+          <span class="store-btn__small">Get it on</span>
+          <span class="store-btn__big">Google Play</span>
+        </span>
+      </span>
+    </div>
+    <p class="store-note">Coming soon.</p>
+
+    <p>Questions? See <a href="../support.html">Support</a>, the
+      <a href="../privacy.html">Privacy Policy</a> or the <a href="../terms.html">Terms</a>.</p>
+  </div>
+</main>
+
+<footer class="page-footer">
+  <div class="wrap">
+    <p>&copy; Meerkat Universe</p>
+  </div>
+</footer>
+
+<script src="../assets/js/config.js" defer></script>
+<script src="../assets/js/site.js" defer></script>
+<script src="../assets/js/invite.js" defer></script>
+</body>
+</html>
