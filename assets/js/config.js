@@ -18,13 +18,23 @@
 
 window.MU_CONFIG = {
   storeLinks: {
-    appStore: null,
+    /* Live on the App Store since 4 September 2026. The id is the same one
+       `update_required_screen.dart` carries as `kAppStoreUrl`; if one ever
+       changes, change both. */
+    appStore: 'https://apps.apple.com/app/id6802090814',
+    /* Still null: the Android build is in the Play Console but not published.
+       A PARTIAL launch is the case the first version of this file did not
+       anticipate — see the note about `.store-note` below. */
     googlePlay: null,
   },
 
   /* The "Coming soon" caption under the buttons is deliberately NOT configured
-     here — it is written in the HTML, so it is correct with JavaScript disabled,
-     and site.js removes it once a real link exists.
+     here — it is written in the HTML, so it is correct with JavaScript disabled.
+     site.js removes it only when EVERY button is live, and rewrites it to name
+     the platform still missing when only some are. It used to remove the caption
+     as soon as ANY button went live, which was fine while the two platforms were
+     assumed to ship together and wrong the moment iOS shipped first: the Play
+     button would have been left looking exactly like the working one.
 
      The support address is likewise written into the pages as real markup, not
      injected from here: it appears in the privacy policy and the terms, where a

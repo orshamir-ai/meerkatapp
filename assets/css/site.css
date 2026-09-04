@@ -258,8 +258,23 @@ a:hover { color: var(--accent); }
 a.store-btn:hover { background: #6B4526; box-shadow: var(--shadow-lift); }
 a.store-btn:active { transform: scale(.97); }
 
-/* The placeholder reads as "not yet", never as "broken". */
-span.store-btn { opacity: .92; cursor: default; }
+/* THE PLACEHOLDER MUST READ AS "NOT YET" ON ITS OWN, and it used not to.
+   This was `opacity: .92` — an 8% difference, which is invisible beside a live
+   button. That was survivable only while the "Coming soon" caption underneath
+   was doing the whole job AND every button was a placeholder. Neither holds
+   after a partial launch: iOS is live, Android is not, and the two sat side by
+   side looking identical. So the placeholder is now HOLLOW where a real link is
+   solid — a difference in kind rather than in degree, legible at a glance, and
+   still legible to anyone who cannot distinguish the colours. */
+span.store-btn {
+  background: transparent;
+  color: var(--ink);
+  border: 2px dashed rgba(74, 47, 26, .38);
+  box-shadow: none;
+  opacity: .72;
+  cursor: default;
+}
+span.store-btn .store-btn__glyph { opacity: .7; }
 
 .store-note {
   font-size: .84rem;

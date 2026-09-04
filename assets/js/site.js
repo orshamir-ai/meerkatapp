@@ -24,13 +24,19 @@
    * span is REPLACED by a real anchor, which is the only way to get genuine
    * link semantics (keyboard, middle-click, "open in new tab", the lot).
    * ------------------------------------------------------------------- */
+  /* Human names for the platforms still to come, so a partial launch can say
+     WHICH one rather than going quiet. Keyed by the `data-store` attribute. */
+  var STORE_NAMES = { appStore: 'iPhone and iPad', googlePlay: 'Android' };
+
   function upgradeStoreButtons() {
     var placeholders = document.querySelectorAll('span.store-btn[data-store]');
     var anyLive = false;
+    var stillComing = [];
 
     Array.prototype.forEach.call(placeholders, function (span) {
-      var url = links[span.getAttribute('data-store')];
-      if (!url) return;
+      var store = span.getAttribute('data-store');
+      var url = links[store];
+      if (!url) { stillComing.push(STORE_NAMES[store] || store); return; }
 
       var a = document.createElement('a');
       a.className = span.className;
@@ -48,14 +54,23 @@
       anyLive = true;
     });
 
-    // The "Coming soon" caption is about the buttons beside it, so it goes
-    // away the moment any of them is real.
-    if (anyLive) {
-      Array.prototype.forEach.call(
-        document.querySelectorAll('.store-note'),
-        function (n) { n.remove(); }
-      );
-    }
+    /* THE CAPTION IS ABOUT THE BUTTONS BESIDE IT, AND A PARTIAL LAUNCH IS THE
+       CASE THAT MATTERS. This used to remove the caption as soon as ANY button
+       went live — correct only if both platforms ship together, which is not
+       what happened: iOS went live first, and removing the caption then would
+       have left the Play placeholder looking exactly like the working App Store
+       link, since the two differ by `opacity: .92` and nothing else. A button
+       that looks live and does nothing is worse than one that says "not yet".
+       So: gone only when everything is live, otherwise rewritten to name what
+       is missing. */
+    if (!anyLive) return;
+    Array.prototype.forEach.call(
+      document.querySelectorAll('.store-note'),
+      function (n) {
+        if (!stillComing.length) { n.remove(); return; }
+        n.textContent = stillComing.join(' and ') + ' coming soon';
+      }
+    );
   }
 
   /* ---------------------------------------------------------------------

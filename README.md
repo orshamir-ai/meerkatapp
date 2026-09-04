@@ -41,14 +41,22 @@ WEBSITE_DESIGN_PLAN.md  the design reasoning behind all of the above
 
 ---
 
-## Store links are NOT configured
+## Store links — iOS is LIVE, Android is not
 
-There are no public App Store or Google Play URLs for this app yet, so **none are in this repo**.
-The two store buttons ship as `<span>` elements: not links, not focusable, no `href`. They cannot
-navigate and cannot reload the page, and a screen reader is told they are "coming soon" rather than
-being told they are buttons that do nothing.
+**App Store: live** (`id6802090814`, approved 4 September 2026). **Google Play: not yet published.**
 
-To make them real, edit **`assets/js/config.js`** and nothing else:
+A button with no URL ships as a `<span>`: not a link, not focusable, no `href`. It cannot navigate
+and cannot reload the page, and a screen reader is told it is "coming soon" rather than being told
+it is a button that does nothing. A configured one is replaced by a real `<a>` on load.
+
+**The partial launch is the case worth knowing about**, because the first version of this site did
+not survive it. The two buttons differed by `opacity: .92` and the shared "Coming soon" caption was
+removed as soon as *any* button went live — so shipping iOS first would have left the Play button
+looking exactly like the working one. Both halves are fixed: the placeholder is now hollow with a
+dashed border where a live button is solid, and the caption is removed only when EVERY button is
+live, otherwise rewritten to name what is missing ("Android coming soon").
+
+To change either link, edit **`assets/js/config.js`** and nothing else:
 
 ```js
 window.MU_CONFIG = {
