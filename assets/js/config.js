@@ -22,10 +22,9 @@ window.MU_CONFIG = {
        `update_required_screen.dart` carries as `kAppStoreUrl`; if one ever
        changes, change both. */
     appStore: 'https://apps.apple.com/app/id6802090814',
-    /* Still null: the Android build is in the Play Console but not published.
-       A PARTIAL launch is the case the first version of this file did not
-       anticipate — see the note about `.store-note` below. */
-    googlePlay: null,
+    /* Live on Google Play since October 2026. Same URL as `kPlayStoreUrl` in
+       the app (update_required_screen.dart, update_available_notice.dart). */
+    googlePlay: 'https://play.google.com/store/apps/details?id=com.orshamir.meerkatuniverse',
   },
 
   /* The "Coming soon" caption under the buttons is deliberately NOT configured

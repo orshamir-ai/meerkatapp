@@ -41,9 +41,9 @@ WEBSITE_DESIGN_PLAN.md  the design reasoning behind all of the above
 
 ---
 
-## Store links — iOS is LIVE, Android is not
+## Store links — both LIVE
 
-**App Store: live** (`id6802090814`, approved 4 September 2026). **Google Play: not yet published.**
+**App Store: live** (`id6802090814`, approved 4 September 2026). **Google Play: live** (`com.orshamir.meerkatuniverse`, October 2026).
 
 A button with no URL ships as a `<span>`: not a link, not focusable, no `href`. It cannot navigate
 and cannot reload the page, and a screen reader is told it is "coming soon" rather than being told
